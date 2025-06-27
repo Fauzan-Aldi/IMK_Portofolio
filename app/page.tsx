@@ -1,0 +1,721 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, ChevronDown, Code, Smartphone, Database, Cloud, Award, Heart, User, GraduationCap, Briefcase, FolderOpen, Wrench, Send } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import img from '../img/aldi1.jpeg'; 
+
+
+const roles = ['Penetration Tester', 'Bug Bounty Hunter', 'Cybersecurity Analyst', 'CTF Player'];
+
+function HeroSection() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % roles.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,212,255,0.1),transparent_50%)]"></div>
+
+      <div className="relative z-10 text-center max-w-4xl mx-auto px-6 space-y-4">
+        <h3 className="text-lg md:text-xl text-gray-400 font-medium">Hy, My Name Is ...</h3>
+        <h1 className="text-4xl md:text-6xl font-bold text-white">Fauzan Aldi</h1>
+        <h3 className="text-xl md:text-2xl text-gray-300">
+          I'm{' '}
+          <span className="text-cyan-400 font-semibold">
+            {roles[index]}
+          </span>
+        </h3>
+      </div>
+    </section>
+  );
+}
+export default function Portfolio() {
+  const [mounted, setMounted] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+
+  useEffect(() => {
+    setMounted(true);
+    
+    const handleScroll = () => {
+      const sections = ['hero', 'about', 'education', 'experience', 'projects', 'skills', 'certifications', 'interests', 'contact'];
+      const current = sections.find(section => {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          return rect.top <= 100 && rect.bottom >= 100;
+        }
+        return false;
+      });
+      if (current) {
+        setActiveSection(current);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (!mounted) return null;
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="bg-black text-white min-h-screen">
+      {/* Navigation */}
+      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex justify-between items-center">
+            <div className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Fauzan Aldi
+            </div>
+            <div className="hidden md:flex space-x-8">
+              {['About', 'Education', 'Experience', 'Projects', 'Skills', 'Contact', 'Login'].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className={`text-sm font-medium transition-colors hover:text-cyan-400 ${
+                    activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'
+                  }`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    {/* Hero Section */}
+<section id="hero" className="py-20 px-6">
+  <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
+    <div className="mb-8 space-y-3">
+      <h3 className="text-lg md:text-xl text-gray-400 font-medium">Hy, My Name Is ...</h3>
+      <h1 className="text-5xl md:text-7xl font-bold text-white">Fauzan Aldi</h1>
+      <h3 className="text-xl md:text-2xl text-gray-300">
+        I'm <span className="text-cyan-400 font-semibold">Penetration Tester</span>
+      </h3>
+    </div>
+
+    {/* Optional subtitle or expertise */}
+    <p className="text-md md:text-lg text-gray-400 mt-6">
+      Security • Mobile App Specialist • Cross-Platform Expert
+    </p>
+
+    {/* Social Icons */}
+    <div className="flex justify-center space-x-6 my-8">
+      <a href="https://github.com" className="p-3 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-110">
+        <Github className="w-6 h-6" />
+      </a>
+      <a href="https://linkedin.com" className="p-3 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-110">
+        <Linkedin className="w-6 h-6" />
+      </a>
+      <a href="mailto:contact@example.com" className="p-3 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-110">
+        <Mail className="w-6 h-6" />
+      </a>
+    </div>
+
+    {/* CTA Button */}
+    <Button 
+      onClick={() => scrollToSection('about')}
+      className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
+    >
+      Explore My Work
+    </Button>
+
+    {/* Down Chevron */}
+    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <ChevronDown className="w-6 h-6 text-cyan-400" />
+    </div>
+  </div>
+</section>
+
+
+      {/* About Section */}
+      <section id="about" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              About Me
+            </h2>
+            <p className="text-gray-300 font-sans">A Brief Introduction About Who I Am</p>
+
+
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+  {/* Bagian Kiri: Teks */}
+  <div className="space-y-6 text-justify">
+  <h3 className="text-xl font-bold text-white">Security Researcher & CTF Players</h3>
+  <div className="space-y-6 text-justify">
+    <p className="text-sm text-gray-300 leading-relaxed">
+    Saya adalah seorang Security Researcher dengan fokus pada analisis keamanan aplikasi, 
+    sistem, dan jaringan. Keahlian saya mencakup penetration testing, vulnerability assessment, 
+    reverse engineering, serta malware analysis. Saya aktif mengeksplorasi berbagai celah keamanan
+    melalui pendekatan riset yang sistematis dan berbasis standar industri seperti OWASP dan NIST.
+    </p>
+    <p className="text-sm text-gray-300 leading-relaxed">
+    Di samping aktivitas profesional, saya juga aktif mengikuti kompetisi 
+    Capture The Flag (CTF) baik secara individu maupun dalam tim. CTF menjadi
+    sarana utama saya untuk mengasah keterampilan praktis di berbagai bidang keamanan
+    seperti web exploitation, binary exploitation, cryptography, forensic analysis, hingga privilege escalation.
+    Pengalaman CTF ini memperkuat kemampuan saya dalam berpikir kritis, cepat dalam debugging, serta memahami serangan
+    dunia nyata secara lebih mendalam.
+    </p>
+    <p className="text-sm text-gray-300 leading-relaxed">
+    Saya terbiasa menggunakan berbagai tools seperti Burp Suite, Wireshark, Ghidra, IDA Pro, Metasploit, dan custom script untuk 
+    eksploitasi dan analisis kerentanan. Setiap temuan saya dokumentasikan dengan baik dalam bentuk laporan teknis dan proof-of-concept.
+    </p>
+    {/* Kontak Info */}
+    <div className="flex flex-col gap-2">
+      <div className="flex items-center space-x-2">
+        <MapPin className="w-5 h-5 text-cyan-400" />
+        <span className="text-gray-300">Available Worldwide</span>
+      </div>
+      <div className="flex items-center space-x-2">
+        <Phone className="w-5 h-5 text-cyan-400" />
+        <span className="text-gray-300">+1 (555) 123-4567</span>
+      </div>
+    </div>
+  </div>
+  </div>
+            
+            <div className="flex justify-center md:justify-end">
+            <div className="relative">
+            <img 
+             src="/src/img/aldi1.jpeg" 
+             alt="My Profile"  
+            className="w-[300px] h-[300px] object-cover rounded-xl shadow-md relative left-[-100px] top-14"
+            />
+          </div>       
+         
+          </div>
+
+
+          </div>
+        </div>
+      </section>
+
+      {/* Education Section */}
+      <section id="education" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Education
+            </h2>
+            <p className="text-gray-300 font-sans">Educational Journey And Milestones</p>
+          </div>
+          
+          <div className="space-y-8">
+        
+              <CardContent className="p-8">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-cyan-500/20 rounded-lg">
+                    <GraduationCap className="w-8 h-8 text-cyan-400" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-2">Universitas Maritim Raja Ali Haji</h3>
+                        <p className="text-cyan-400 font-medium">Teknik Informatika</p>
+                      </div>
+                      <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30">2023 - 2027</Badge>
+                    </div>
+                    <p className="text-gray-300 mb-4">
+                    Focused on secure web application development,
+                    vulnerability assessment, and implementation of security best practices across full-stack environments.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge variant="secondary" className="bg-gray-800 text-gray-300">GPA: 3.5/4.0</Badge>
+                      <Badge variant="secondary" className="bg-gray-800 text-gray-300">2023-2027</Badge>
+                      <Badge variant="secondary" className="bg-gray-800 text-gray-300">List</Badge>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+         
+              <CardContent className="p-8">
+                <div className="flex items-start space-x-4">
+                  <div className="p-3 bg-purple-500/20 rounded-lg">
+                    <Award className="w-8 h-8 text-purple-400" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="text-xl font-bold text-white mb-2">SMKN 4 Tanjung Pinang</h3>
+                        <p className="text-purple-400 font-medium">Teknik Komputer Dan Jaringan</p>
+                      </div>
+                      <Badge className="bg-purple-500/20 text-purple-400 border-purple-500/30">2020-2023</Badge>
+                    </div>
+                    <p className="text-gray-300">
+                    Focused on computer network setup, server administration, and basic cybersecurity
+                    practices including firewall configuration, network monitoring, and system hardening.
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      <Badge variant="secondary" className="bg-gray-800 text-gray-300">GPA: 90.5</Badge>
+                      <Badge variant="secondary" className="bg-gray-800 text-gray-300">2020-2023</Badge>
+                      <Badge variant="secondary" className="bg-gray-800 text-gray-300">List</Badge>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+          
+          </div>
+        </div>
+      </section>
+
+           {/* Experience Section */}
+           <section id="experience" className="py-20 px-6 bg-black">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Experiences
+            </h2>
+            <p className="text-gray-300 font-sans">My Professional Cybersecurity Journey</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-10">
+            {/* Left Timeline */}
+            <div className="relative pl-6 border-l-2 border-cyan-500/30 space-y-8">
+              {/* BUG HUNTER */}
+          
+                <CardContent className="p-6 space-y-3">
+                  <h3 className="text-xl font-bold text-white">BUG HUNTER</h3>
+                  <p className="text-sm text-gray-400">Agustus 2023 - Agustus 2024 | Pekerja Lepas</p>
+                  <p className="text-sm text-cyan-400">BugCrowd</p>
+                  <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                    <li>Menemukan celah kritis dan mendapat kompensasi serta pengakuan Hall of Fame NASA.</li>
+                    <li>Diundang program bug bounty privat oleh platform ternama.</li>
+                    <li>Ahli Burp Suite, OWASP ZAP dan teknik uji manual.</li>
+                  </ul>
+                </CardContent>
+            
+
+              {/* PENETRATION TESTER */}
+            
+                <CardContent className="p-6 space-y-3 text-justify">
+                  <h3 className="text-xl font-bold text-white">PENETRATION TESTER</h3>
+                  <p className="text-sm text-gray-400">Juni 2022 - Juni 2024 | Pekerja Lepas</p>
+                  <p className="text-sm text-cyan-400">Intigriti</p>
+                  <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                    <li>Mendeteksi kerentanan dan mempercepat mitigasi risiko keamanan.</li>
+                    <li>Mengembangkan sistem keamanan otomatis untuk monitoring dan threat detection.</li>
+                    <li>Mengurangi dampak finansial dari potensi insiden keamanan.</li>
+                  </ul>
+                </CardContent>
+              
+            </div>
+
+            {/* Right Timeline */}
+            <div className="relative pl-6 border-l-2 border-cyan-500/30 space-y-8">
+              {/* BUG BOUNTY */}
+              
+                <CardContent className="p-6 space-y-3">
+                  <h3 className="text-xl font-bold text-white">BUG BOUNTY</h3>
+                  <p className="text-sm text-gray-400">Juli 2022 - Juli 2024 | Pekerja Lepas</p>
+                  <p className="text-sm text-cyan-400">YesWeHack</p>
+                  <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                    <li>Laporan pengujian penetrasi dengan analisis sistematis dan penilaian risiko.</li>
+                    <li>Kuat dalam keamanan aplikasi web dan pembelajaran teknologi keamanan terbaru.</li>
+                    <li>Berpengalaman dengan Nessus dan Metasploit.</li>
+                  </ul>
+                </CardContent>
+            
+
+              {/* VVIP BSSN */}
+              <div className="relative -top-6">
+                <CardContent className="p-6 space-y-3 text-justify">
+                  <h3 className="text-xl font-bold text-white">VVIP PROGRAM - BADAN SIBER DAN SANDI NEGARA</h3>
+                  <p className="text-sm text-gray-400">Mei 2024 - Mei 2024 | Pekerja Lepas</p>
+                  <p className="text-sm text-cyan-400">Voluntary Bug Hunter</p>
+                  <ul className="list-disc list-inside text-gray-300 text-sm space-y-1">
+                    <li>Berkontribusi dalam program strategis BSSN untuk peningkatan keamanan sistem elektronik.</li>
+                    <li>Evaluasi kerentanan web apps menggunakan metode manual dan otomatis.</li>
+                    <li>Menerima sertifikat partisipasi resmi dari BSSN.</li>
+                  </ul>
+                </CardContent>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Projects
+            </h2>
+            <p className="text-gray-300 font-sans">Projects That Reflect My Skills And Passion</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "EcommMax Mobile",
+                description: "Full-featured e-commerce app with payment integration, real-time notifications, and advanced filtering.",
+                tech: ["Flutter", "Firebase", "Stripe API", "Provider"],
+                color: "cyan"
+              },
+              {
+                title: "HealthTracker Pro",
+                description: "Health monitoring app with biometric tracking, data visualization, and doctor consultation features.",
+                tech: ["Flutter", "SQLite", "Charts", "Sensors"],
+                color: "blue"
+              },
+              {
+                title: "TaskFlow Manager",
+                description: "Project management tool with team collaboration, real-time updates, and productivity analytics.",
+                tech: ["Flutter", "Firebase", "WebRTC", "Bloc"],
+                color: "purple"
+              },
+              {
+                title: "CryptoWatch Live",
+                description: "Cryptocurrency portfolio tracker with real-time prices, news feed, and trading alerts.",
+                tech: ["Flutter", "REST API", "WebSocket", "Riverpod"],
+                color: "green"
+              },
+              {
+                title: "SocialHub Connect",
+                description: "Social networking app with messaging, media sharing, and community features.",
+                tech: ["Flutter", "Firebase", "Cloud Storage", "FCM"],
+                color: "pink"
+              },
+              {
+                title: "LearnFlow Academy",
+                description: "E-learning platform with video streaming, progress tracking, and interactive quizzes.",
+                tech: ["Flutter", "Video Player", "SQLite", "GetX"],
+                color: "orange"
+              }
+            ].map((project, index) => (
+              <Card key={index} className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300 group hover:scale-105">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <FolderOpen className="w-8 h-8 text-cyan-400" />
+                    <div className="flex space-x-2">
+                      <ExternalLink className="w-5 h-5 text-gray-400 hover:text-cyan-400 cursor-pointer transition-colors" />
+                      <Github className="w-5 h-5 text-gray-400 hover:text-cyan-400 cursor-pointer transition-colors" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, techIndex) => (
+                      <Badge key={techIndex} variant="secondary" className="bg-gray-800 text-gray-300 text-xs">
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Skills & Technologies
+            </h2>
+            <p className="text-gray-300 font-sans">Technologies I’m Confident Working With</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                category: "Mobile Development",
+                icon: <Smartphone className="w-8 h-8" />,
+                skills: ["Flutter", "Dart", "iOS", "Android", "React Native"],
+                color: "cyan"
+              },
+              {
+                category: "Backend & Database",
+                icon: <Database className="w-8 h-8" />,
+                skills: ["Firebase", "Supabase", "SQLite", "MongoDB", "PostgreSQL"],
+                color: "blue"
+              },
+              {
+                category: "Cloud & DevOps",
+                icon: <Cloud className="w-8 h-8" />,
+                skills: ["AWS", "Google Cloud", "Docker", "CI/CD", "Git"],
+                color: "purple"
+              },
+              {
+                category: "Programming",
+                icon: <Code className="w-8 h-8" />,
+                skills: ["Dart", "JavaScript", "TypeScript", "Python", "Java"],
+                color: "green"
+              }
+            ].map((skillGroup, index) => (
+              <Card key={index} className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300 group">
+                <CardContent className="p-6 text-center">
+                  <div className={`inline-flex p-4 rounded-lg mb-4 bg-${skillGroup.color}-500/20`}>
+                    <div className={`text-${skillGroup.color}-400`}>
+                      {skillGroup.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-white mb-4">{skillGroup.category}</h3>
+                  <div className="space-y-2">
+                    {skillGroup.skills.map((skill, skillIndex) => (
+                      <div key={skillIndex} className="flex justify-between items-center">
+                        <span className="text-gray-300 text-sm">{skill}</span>
+                        <div className="flex space-x-1">
+                          {[...Array(5)].map((_, i) => (
+                            <div
+                              key={i}
+                              className={`w-2 h-2 rounded-full ${
+                                i < 4 ? 'bg-cyan-400' : 'bg-gray-600'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section id="certifications" className="py-20 px-6 bg-gray-900/30">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Certifications
+            </h2>
+            <p className="text-gray-300 font-sans">Certificates From Courses, Programs, And Institutions</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Google Associate Android Developer",
+                issuer: "Google",
+                date: "2024",
+                color: "cyan"
+              },
+              {
+                title: "AWS Cloud Practitioner",
+                issuer: "Amazon Web Services",
+                date: "2023",
+                color: "blue"
+              },
+              {
+                title: "Flutter Certified Developer",
+                issuer: "Flutter Institute",
+                date: "2023",
+                color: "purple"
+              },
+              {
+                title: "Firebase Certified",
+                issuer: "Google Cloud",
+                date: "2022",
+                color: "green"
+              }
+            ].map((cert, index) => (
+              <Card key={index} className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="flex items-center space-x-4">
+                    <div className={`p-3 bg-${cert.color}-500/20 rounded-lg`}>
+                      <Award className={`w-8 h-8 text-${cert.color}-400`} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-white mb-1">{cert.title}</h3>
+                      <p className="text-gray-300 text-sm mb-2">{cert.issuer}</p>
+                      <Badge className={`bg-${cert.color}-500/20 text-${cert.color}-400 border-${cert.color}-500/30`}>
+                        {cert.date}
+                      </Badge>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Interests Section */}
+      <section id="interests" className="py-20 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Interests & Hobbies
+            </h2>
+            <p className="text-gray-300 font-sans">Exploring The World Of Cybersecurity And Clean Code</p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Open Source",
+                description: "Contributing to Flutter packages and maintaining developer tools",
+                icon: <Github className="w-8 h-8" />
+              },
+              {
+                title: "Tech Blogging",
+                description: "Writing about Flutter development and mobile app architecture",
+                icon: <Code className="w-8 h-8" />
+              },
+              {
+                title: "UI/UX Design",
+                description: "Creating beautiful and intuitive mobile app interfaces",
+                icon: <Heart className="w-8 h-8" />
+              }
+            ].map((interest, index) => (
+              <Card key={index} className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300 group text-center">
+                <CardContent className="p-8">
+                  <div className="inline-flex p-4 rounded-lg mb-4 bg-cyan-500/20 group-hover:bg-cyan-500/30 transition-all duration-300">
+                    <div className="text-cyan-400">
+                      {interest.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-3">{interest.title}</h3>
+                  <p className="text-gray-300">{interest.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-20 px-6 bg-gray-900/30">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Get In Touch
+            </h2>
+            <p className="text-gray-300 font-sans">Open For Collaboration, Questions, Or Just A Hello</p>
+        
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="space-y-8">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-cyan-500/20 rounded-lg">
+                  <Mail className="w-6 h-6 text-cyan-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Email</h3>
+                  <p className="text-gray-300">contact@example.com</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-blue-500/20 rounded-lg">
+                  <Phone className="w-6 h-6 text-blue-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Phone</h3>
+                  <p className="text-gray-300">+1 (555) 123-4567</p>
+                </div>
+              </div>
+              
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-purple-500/20 rounded-lg">
+                  <MapPin className="w-6 h-6 text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-white">Location</h3>
+                  <p className="text-gray-300">Remote • Available Worldwide</p>
+                </div>
+              </div>
+            </div>
+            
+            <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
+              <CardContent className="p-8">
+                <form className="space-y-6">
+                  <div>
+                    <Input
+                      placeholder="Your Name"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400"
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      type="email"
+                      placeholder="Your Email"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400"
+                    />
+                  </div>
+                  <div>
+                    <Input
+                      placeholder="Subject"
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400"
+                    />
+                  </div>
+                  <div>
+                    <Textarea
+                      placeholder="Your message..."
+                      rows={5}
+                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400 resize-none"
+                    />
+                  </div>
+                  <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white transition-all duration-300 hover:scale-105">
+                    <Send className="w-4 h-4 mr-2" />
+                    Send Message
+                  </Button>
+                </form>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-12 px-6 border-t border-gray-800">
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="mb-4 md:mb-0">
+              <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+                Flutter Developer Portfolio
+              </div>
+              <p className="text-gray-400">Building the future, one app at a time.</p>
+            </div>
+            <div className="flex space-x-6">
+              <a href="https://github.com" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                <Github className="w-6 h-6" />
+              </a>
+              <a href="https://linkedin.com" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                <Linkedin className="w-6 h-6" />
+              </a>
+              <a href="mailto:contact@example.com" className="text-gray-400 hover:text-cyan-400 transition-colors">
+                <Mail className="w-6 h-6" />
+              </a>
+            </div>
+          </div>
+          <div className="mt-8 pt-8 border-t border-gray-800 text-center">
+            <p className="text-gray-400">
+              © 2024 Flutter Developer Portfolio. Built with Next.js and Tailwind CSS.
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
