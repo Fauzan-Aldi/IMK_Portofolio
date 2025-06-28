@@ -8,38 +8,10 @@ import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import img from '../img/aldi1.jpeg'; 
+import { ReactTyped } from "react-typed";
+import { motion } from "framer-motion";
 
 
-const roles = ['Penetration Tester', 'Bug Bounty Hunter', 'Cybersecurity Analyst', 'CTF Player'];
-
-function HeroSection() {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % roles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-cyan-900/20"></div>
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,212,255,0.1),transparent_50%)]"></div>
-
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6 space-y-4">
-        <h3 className="text-lg md:text-xl text-gray-400 font-medium">Hy, My Name Is ...</h3>
-        <h1 className="text-4xl md:text-6xl font-bold text-white">Fauzan Aldi</h1>
-        <h3 className="text-xl md:text-2xl text-gray-300">
-          I'm{' '}
-          <span className="text-cyan-400 font-semibold">
-            {roles[index]}
-          </span>
-        </h3>
-      </div>
-    </section>
-  );
-}
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -75,74 +47,118 @@ export default function Portfolio() {
 
   return (
     <div className="bg-black text-white min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex justify-between items-center">
-            <div className="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Fauzan Aldi
-            </div>
-            <div className="hidden md:flex space-x-8">
-              {['About', 'Education', 'Experience', 'Projects', 'Skills', 'Contact', 'Login'].map((item) => (
-                <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
-                  className={`text-sm font-medium transition-colors hover:text-cyan-400 ${
-                    activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
+     {/* Navigation */}
+<nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
+  <div className="max-w-7xl mx-auto px-6 py-4">
+    <div className="flex justify-between items-center">
+      
+      {/* Left: Icons + Name */}
+     {/* Left: Icons + Name */}
+<div className="flex items-center space-x-3">
+  {/* Icons */}
+  <div className="flex space-x-2">
+    <a
+      href="https://github.com"
+      className="p-1.5 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-105 shadow"
+    >
+      <Github className="w-4 h-4" />
+    </a>
+    <a
+      href="https://linkedin.com"
+      className="p-1.5 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-105 shadow"
+    >
+      <Linkedin className="w-4 h-4" />
+    </a>
+    <a
+      href="mailto:contact@example.com"
+      className="p-1.5 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-105 shadow"
+    >
+      <Mail className="w-4 h-4" />
+    </a>
+  </div>
+
+  {/* Name */}
+  <span className="text-base md:text-lg font-semibold bg-gradient-to-r from-white via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+    Fauzan Aldi
+  </span>
+</div>
+
+      
+      {/* Left: Navigation Menu */}
+      <div className="hidden md:flex space-x-8">
+        {['About', 'Education', 'Experience', 'Projects', 'Skills', 'Contact', 'Login'].map((item) => (
+          <button
+            key={item}
+            onClick={() => scrollToSection(item.toLowerCase())}
+            className={`text-sm font-medium transition-colors hover:text-cyan-400 ${
+              activeSection === item.toLowerCase() ? 'text-cyan-400' : 'text-gray-300'
+            }`}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+               
           </div>
         </div>
       </nav>
 
-    {/* Hero Section */}
-<section id="hero" className="py-20 px-6">
-  <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-    <div className="mb-8 space-y-3">
-      <h3 className="text-lg md:text-xl text-gray-400 font-medium">Hy, My Name Is ...</h3>
-      <h1 className="text-5xl md:text-7xl font-bold text-white">Fauzan Aldi</h1>
-      <h3 className="text-xl md:text-2xl text-gray-300">
-        I'm <span className="text-cyan-400 font-semibold">Penetration Tester</span>
-      </h3>
-    </div>
-
-    {/* Optional subtitle or expertise */}
-    <p className="text-md md:text-lg text-gray-400 mt-6">
-      Security • Mobile App Specialist • Cross-Platform Expert
-    </p>
-
-    {/* Social Icons */}
-    <div className="flex justify-center space-x-6 my-8">
-      <a href="https://github.com" className="p-3 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-110">
-        <Github className="w-6 h-6" />
-      </a>
-      <a href="https://linkedin.com" className="p-3 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-110">
-        <Linkedin className="w-6 h-6" />
-      </a>
-      <a href="mailto:contact@example.com" className="p-3 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-110">
-        <Mail className="w-6 h-6" />
-      </a>
-    </div>
-
-    {/* CTA Button */}
-    <Button 
-      onClick={() => scrollToSection('about')}
-      className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
+  {/* Hero Section */}
+  function Hero() 
+  return 
+    <section
+      id="hero"
+      className="py-20 px-6"
     >
-      Explore My Work
-    </Button>
+      <div className="container pb-8 sm:pb-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2">
+          {/* Text Section */}
+          <div className="flex flex-col justify-center pt-1  mt-[-90px] sm:pt-0 text-center sm:text-left order-2 sm:order-1 gap-8">
+            {/* Text Page Hero */}
+            <div className=" dark:text-white text-2xl">
+              <p>
+                Hy, My Name Is ...🙌{" "}
+                <span className="text-4xl block font-bold my-5">
+                  Fauzan Aldi
+                </span>
+                I'm{" "}
+                <span className="text-cyan-400 text-2xl">
+                  <ReactTyped
+                    strings={[
+                      "Security Researcher",
+                      "Penetration Tester",
+                      "Bug Hunter",
+                      "CTF Players",
+                      "Cyber Security Enthusiast",
+                      "Informatics Student",
+                    ]}
+                    typeSpeed={100}
+                    loop
+                    backSpeed={20}
+                    cursorChar="|"
+                    showCursor={true}
+                  />
+                </span>
+              </p>
+            </div>
+          </div>
 
-    {/* Down Chevron */}
-    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-      <ChevronDown className="w-6 h-6 text-cyan-400" />
-    </div>
-  </div>
-</section>
-
+          {/* Image Section (Optional) */}
+          <div className="sm:min-h-[450px] flex justify-center items-center relative order-1 sm:order-2">
+            <div className="relative h-full w-full flex justify-center items-center">
+              {/* Image Placeholder */}
+              {/* 
+              <img
+                src="/profile.png"
+                alt="Profile"
+                className="w-[300px] lg:w-[350px] sm:w-[450px] sm:scale-100 mx-auto"
+              />
+              */}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
       {/* About Section */}
       <section id="about" className="py-20 px-6">
@@ -181,14 +197,30 @@ export default function Portfolio() {
     </p>
     {/* Kontak Info */}
     <div className="flex flex-col gap-2">
+    <div className="flex items-center space-x-2">
+      <User className="w-5 h-5 text-cyan-400" />
+      <span className="text-gray-300">Age : 20</span>
+      </div>
+      
       <div className="flex items-center space-x-2">
         <MapPin className="w-5 h-5 text-cyan-400" />
-        <span className="text-gray-300">Available Worldwide</span>
+        <span className="text-gray-300">City : Kepulauan Riau, Indonesia</span>
       </div>
+
       <div className="flex items-center space-x-2">
         <Phone className="w-5 h-5 text-cyan-400" />
-        <span className="text-gray-300">+1 (555) 123-4567</span>
+        <span className="text-gray-300">Phone : +62 853 6340 7399</span>
       </div>
+
+      <div className="flex items-center space-x-2">
+      <User className="w-5 h-5 text-cyan-400" />
+      <span className="text-gray-300">Degree : Mahasiswa Universitas</span>
+      </div>
+      <div className="flex items-center space-x-2">
+      <Award className="w-5 h-5 text-cyan-400" />
+      <span className="text-gray-300">Email : fauzanalditester@gmail.com</span>
+      </div>
+      
     </div>
   </div>
   </div>
@@ -291,8 +323,14 @@ export default function Portfolio() {
           <div className="grid md:grid-cols-2 gap-10">
             {/* Left Timeline */}
             <div className="relative pl-6 border-l-2 border-cyan-500/30 space-y-8">
-              {/* BUG HUNTER */}
           
+              {/* BUG HUNTER */}
+              <div className="relative">
+              <span className="absolute -left-[1.1rem] top-3 w-3 h-3 bg-cyan-400 rounded-full"></span>
+              <CardContent className="p-6 space-y-3">
+            </CardContent>
+            </div>
+
                 <CardContent className="p-6 space-y-3">
                   <h3 className="text-xl font-bold text-white">BUG HUNTER</h3>
                   <p className="text-sm text-gray-400">Agustus 2023 - Agustus 2024 | Pekerja Lepas</p>
@@ -354,8 +392,9 @@ export default function Portfolio() {
         </div>
       </section>
 
+
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6">
+      <section id="projects" className="py-20 px-6 bg-gray-900/30">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
