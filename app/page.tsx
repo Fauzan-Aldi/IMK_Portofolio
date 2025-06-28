@@ -272,7 +272,7 @@ const certificates: Certificate[] = [
   {
     id: 1,
     title: "Google Cyber Security",
-    description: " Kursus program pelatihan untuk pemula, mengajarkan keterampilan keamanan siber Secara praktis.",
+    description: " Kursus program pelatihan untuk pemula, mengajarkan keterampilan keamanan siber.",
     imageUrl: "/src/img/GoogleCyberSecurity.png",
     issuer: "Coursera-Net",
     year: "2024"
@@ -280,7 +280,7 @@ const certificates: Certificate[] = [
   {
     id: 2,
     title: "Fundamental Of Cyber",
-    description: "Kursus Fundamental Cyber Security di Coursera memperkenalkan konsep dasar keamanan siber.",
+    description: "Kursus Fundamental Cyber Security yang memperkenalkan konsep keamanan siber.",
     imageUrl: "/src/img/Course.net.png",
     issuer: "Coursera-Net",
     year: "2024"
@@ -296,7 +296,7 @@ const certificates: Certificate[] = [
   {
     id: 4,
     title: "Jaringan Komputer",
-    description: "Kursus ini mengajarkan dasar-dasar jaringan komputer, termasuk protokol, alamat IP, dan layanan.",
+    description: "Kursus ini mengajarkan dasar-dasar jaringan komputer, termasuk protokol, alamat IP dll.",
     imageUrl: "/src/img/jaringan.png",
     issuer: "Coursera-Net",
     year: "2024"
@@ -320,7 +320,7 @@ const certificates: Certificate[] = [
   {
     id: 7,
     title: "Certified Multi-Cloud Blue Team Analyst (MCBTA)",
-    description: " Sertifikasi Dari CWL untuk menguasai keamanan, pemantauan, dan investigasi insiden.",
+    description: " Sertifikasi Dari CWL untuk menguasai keamanan, pemantauan, dan investigasi.",
     imageUrl: "/src/img/MCBTA.jpg",
     issuer: "CWL",
     year: "2025"
@@ -328,43 +328,44 @@ const certificates: Certificate[] = [
   {
     id: 8,
     title: "Certified AppSec Pentester (CAPEN)",
-    description: "Sertifikasi Dari CWL untuk menguji kemampuan praktis dalam pengujian penetrasi aplikasi web.",
+    description: "Sertifikasi Dari CWL untuk menguji kemampuan praktis dalam pengujian pentes.",
     imageUrl: "/src/img/AppSec.png",
     issuer: "CWL",
     year: "2024"
   },
   {
-    id: 9,
-    title: "Mobile App Development",
-    description: "Expert certification in cross-platform mobile application development.",
-    imageUrl: "https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=600",
-    issuer: "Mobile Academy",
+    id: 11,
+    title: "BSSN VVIP PROGRAM : VULNERABILITY ( HIGH )",
+    description: "Sebagai pelapor kerentanan dengan severity (HIGH) program BSSN.",
+    imageUrl: "/src/img/BSSN3.png",
+    issuer: "BSSN VVIP",
     year: "2024"
+  },
+  {
+    id: 9,
+    title: "BSSN VVIP PROGRAM : JAWA TIMUR",
+    description: "Sebagai partisipan program identifikasi Kerentanan : Jawa Timur Program BSSN.",
+    imageUrl: "/src/img/BSSN1.png",
+    issuer: "BSSN VVIP",
+    year: "5 -14 Februari 2024"
   },
   {
     id: 10,
-    title: "Digital Marketing Professional",
-    description: "Advanced certification in digital marketing strategies and analytics.",
-    imageUrl: "https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg?auto=compress&cs=tinysrgb&w=600",
-    issuer: "Marketing Institute",
-    year: "2023"
-  },
-  {
-    id: 11,
-    title: "AI & Machine Learning",
-    description: "Specialized certification in artificial intelligence and deep learning.",
-    imageUrl: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600",
-    issuer: "AI Academy",
+    title: "BSSN VVIP PROGRAM : D.I.YOGYAKARTA",
+    description: "Sebagai partisipan program identifikasi Kerentanan : D.I Yogyakarta Program BSSN.",
+    imageUrl: "/src/img/BSSN2.png",
+    issuer: "BSSN VVIP",
     year: "2024"
   },
   {
-    id: 12,
-    title: "Project Management Professional",
-    description: "Comprehensive certification in project management methodologies.",
-    imageUrl: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600",
-    issuer: "PM Institute",
-    year: "2023"
-  }
+    id: 11,
+    title: "BSSN VVIP PROGRAM : KULON PROGO",
+    description: "Sebagai partisipan program identifikasi Kerentanan : Kulon Progo Program BSSN.",
+    imageUrl: "/src/img/BSSN4.jpg",
+    issuer: "BSSN VVIP",
+    year: "2024"
+  },
+ 
 ];
 
 function CertificateCard({ cert }: { cert: Certificate }) {
