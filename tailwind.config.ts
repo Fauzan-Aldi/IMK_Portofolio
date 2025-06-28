@@ -83,7 +83,7 @@ const config: Config = {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         // ✅ Tambahkan animasi marquee
-        marquee: 'marquee 25s linear infinite',
+        marquee: 'marquee 15s linear infinite',
         'marquee-reverse': 'marquee-reverse 25s linear infinite',
       },
     },

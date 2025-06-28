@@ -538,10 +538,10 @@ export default function Portfolio() {
 
       {/* Skills Section */}
   
-    <section id="skills" className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
+    <section id="skills" className="py-20 px-0">
+      <div className="w-full mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold mb-4 ">
             Skills & Technologies
           </h2>
           <p className="text-gray-300 font-sans">Technologies I’m Confident Working With</p>
@@ -550,14 +550,14 @@ export default function Portfolio() {
         {/* Animated Skills Marquee */}
         <div className="relative overflow-hidden py-8">
           {/* Gradient overlays */}
-          <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10" />
-          <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10" />
+        {/* Gradient overlays */}
+            {/* Gradient overlays */}
 
           {/* First marquee row */}
           <div className="flex animate-marquee space-x-8 mb-8">
-          {[...skills, ...skills].map((skill: Skill, index: number) => (
+          {[...skills, ...skills, ...skills].map((skill: Skill, index: number) => (
               <div key={`row1-${index}`} className="flex-shrink-0 group cursor-pointer">
-                <div className="flex items-center space-x-4 px-6 py-4 rounded-full bg-gray-900 border border-gray-700 hover:border-gray-500 transition-all duration-300 transform hover:scale-105 min-w-[200px]">
+                <div className="flex items-center space-x-4 px-6 py-4 rounded-">
                   <div className={`flex items-center justify-center w-12 h-12 rounded-full ${skill.color} text-white group-hover:scale-110 transition-transform duration-300`}>
                     {skill.icon}
                   </div>
@@ -574,9 +574,9 @@ export default function Portfolio() {
 
           {/* Second marquee row (reverse) */}
           <div className="flex animate-marquee-reverse space-x-8">
-          {[...skills, ...skills].reverse().map((skill: Skill, index: number) => (
+          {[...skills, ...skills, ...skills].reverse().map((skill: Skill, index: number) => (
               <div key={`row2-${index}`} className="flex-shrink-0 group cursor-pointer">
-                <div className="flex items-center space-x-4 px-6 py-4 rounded-full bg-gray-900 border border-gray-700 hover:border-gray-500 transition-all duration-300 transform hover:scale-105 min-w-[200px]">
+                <div className="flex items-center space-x-4 px-6 py-4 rounded-full">
                   <div className={`flex items-center justify-center w-12 h-12 rounded-full ${skill.color} text-white group-hover:scale-110 transition-transform duration-300`}>
                     {skill.icon}
                   </div>
