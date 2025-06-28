@@ -26,14 +26,25 @@ import {
   ServerCrash, 
   DatabaseBackup, 
   HardDriveDownload, 
-
 } from 'lucide-react';
+import { StarIcon } from '@heroicons/react/24/solid';
+
+
+
 type Skill = {
   name: string;
   icon: JSX.Element;
   category: string;
   color: string;
 };
+interface Certificate {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+  issuer: string;
+  year: string;
+}
 
 const skill: Skill[] = [
   {
@@ -257,8 +268,141 @@ const skillsBottom: Skill[] = [
   },
 
 ];
+const certificates: Certificate[] = [
+  {
+    id: 1,
+    title: "Google Cyber Security",
+    description: " Kursus program pelatihan untuk pemula, mengajarkan keterampilan keamanan siber Secara praktis.",
+    imageUrl: "/src/img/GoogleCyberSecurity.png",
+    issuer: "Coursera-Net",
+    year: "2024"
+  },
+  {
+    id: 2,
+    title: "Fundamental Of Cyber",
+    description: "Kursus Fundamental Cyber Security di Coursera memperkenalkan konsep dasar keamanan siber.",
+    imageUrl: "/src/img/Course.net.png",
+    issuer: "Coursera-Net",
+    year: "2024"
+  },
+  {
+    id: 3,
+    title: "Endpoint Security",
+    description: "Kursus keamanan perangkat yang melindungi dari malware dan serangan siber berbasis cloud.",
+    imageUrl: "/src/img/Endpointsecurity.png",
+    issuer: "Cisco",
+    year: "2024"
+  },
+  {
+    id: 4,
+    title: "Jaringan Komputer",
+    description: "Kursus ini mengajarkan dasar-dasar jaringan komputer, termasuk protokol, alamat IP, dan layanan.",
+    imageUrl: "/src/img/jaringan.png",
+    issuer: "Coursera-Net",
+    year: "2024"
+  },
+  {
+    id: 5,
+    title: "Certified AI/ML Pentester (C-AI/MLPEN)",
+    description: "Sertifikasi Dari The Sec Ops Group tentang menguji keamanan sistem AI dan machine learning. ",
+    imageUrl: "/src/img/ai.png",
+    issuer: "The SecOps Group",
+    year: "2024"
+  },
+  {
+    id: 6,
+    title: "Certified Red Team Analyst (CRTA)",
+    description: "Sertifikasi Dari CWL untuk menguji kemampuan melakukan serangan simulasi dan eksploitasi.",
+    imageUrl: "/src/img/CRTA.png",
+    issuer: "CWL",
+    year: "2025"
+  },
+  {
+    id: 7,
+    title: "Certified Multi-Cloud Blue Team Analyst (MCBTA)",
+    description: " Sertifikasi Dari CWL untuk menguasai keamanan, pemantauan, dan investigasi insiden.",
+    imageUrl: "/src/img/MCBTA.jpg",
+    issuer: "CWL",
+    year: "2025"
+  },
+  {
+    id: 8,
+    title: "Certified AppSec Pentester (CAPEN)",
+    description: "Sertifikasi Dari CWL untuk menguji kemampuan praktis dalam pengujian penetrasi aplikasi web.",
+    imageUrl: "/src/img/AppSec.png",
+    issuer: "CWL",
+    year: "2024"
+  },
+  {
+    id: 9,
+    title: "Mobile App Development",
+    description: "Expert certification in cross-platform mobile application development.",
+    imageUrl: "https://images.pexels.com/photos/147413/twitter-facebook-together-exchange-of-information-147413.jpeg?auto=compress&cs=tinysrgb&w=600",
+    issuer: "Mobile Academy",
+    year: "2024"
+  },
+  {
+    id: 10,
+    title: "Digital Marketing Professional",
+    description: "Advanced certification in digital marketing strategies and analytics.",
+    imageUrl: "https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg?auto=compress&cs=tinysrgb&w=600",
+    issuer: "Marketing Institute",
+    year: "2023"
+  },
+  {
+    id: 11,
+    title: "AI & Machine Learning",
+    description: "Specialized certification in artificial intelligence and deep learning.",
+    imageUrl: "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=600",
+    issuer: "AI Academy",
+    year: "2024"
+  },
+  {
+    id: 12,
+    title: "Project Management Professional",
+    description: "Comprehensive certification in project management methodologies.",
+    imageUrl: "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600",
+    issuer: "PM Institute",
+    year: "2023"
+  }
+];
 
-
+function CertificateCard({ cert }: { cert: Certificate }) {
+  return (
+    <Card className="group bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300 hover:scale-105">
+      <div className="relative overflow-hidden h-40 bg-gradient-to-br from-gray-100 to-gray-200">
+        <Image
+          src={cert.imageUrl}
+          alt={cert.title}
+          layout="fill"
+          objectFit="contain"
+          className="group-hover:scale-105 transition-transform duration-800"
+        />
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-2">
+          <div className="flex items-center justify-between text-white text-xs">
+            <span className="font-medium">{cert.issuer}</span>
+            <span>{cert.year}</span>
+          </div>
+        </div>
+      </div>
+      <CardContent className="p-5">
+        <h3 className="text-lg font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors line-clamp-2">
+          {cert.title}
+        </h3>
+        <p className="text-gray-300 text-sm leading-relaxed line-clamp-3">
+          {cert.description}
+        </p>
+        <div className="mt-4 flex items-center">
+          <div className="flex-1 h-px bg-gradient-to-r from-cyan-200 to-blue-200"></div>
+          <div className="px-3 py-1 bg-gradient-to-r from-cyan-50 to-blue-50 rounded-full border border-cyan-200">
+            <span className="text-xs font-medium text-cyan-700"></span>
+          </div>
+          <div className="flex-1 h-px bg-gradient-to-r from-blue-200 to-cyan-200"></div>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -422,7 +566,7 @@ export default function Portfolio() {
          
           <div className="grid md:grid-cols-2 gap-12 items-start">
   {/* Bagian Kiri: Teks */}
-  <div className="space-y-6 text-justify">
+  <div className="space-y-6 text-justify pl-16">
   <h3 className="text-xl font-bold text-white">Security Researcher & CTF Players</h3>
   <div className="space-y-6 text-justify">
     <p className="text-sm text-gray-300 leading-relaxed">
@@ -479,7 +623,7 @@ export default function Portfolio() {
             <img 
              src="/src/img/aldi1.jpeg" 
              alt="My Profile"  
-            className="w-[300px] h-[300px] object-cover rounded-xl shadow-md relative left-[-100px] top-14"
+            className="w-[300px] h-[300px] object-cover rounded-xl shadow-md relative left-[-150px] top-14"
             />
           </div>       
          
@@ -784,23 +928,27 @@ export default function Portfolio() {
       <section id="certifications" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Certifications
-            </h2>
+            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Certifications</h2>
             <p className="text-gray-300 font-sans">Certificates From Courses, Programs, And Institutions</p>
           </div>
-          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {certificates.map((cert) => (
+              <CertificateCard key={cert.id} cert={cert} />
+            ))}
+          </div>
         </div>
       </section>
-
+    </div>
+  );
+}
       {/* Interests Section */}
       <section id="interests" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Interests & Hobbies
+            Hack & Reading Articles
             </h2>
-            <p className="text-gray-300 font-sans">Exploring The World Of Cybersecurity And Clean Code</p>
+            <p className="text-gray-300 font-sans">Articles That Merge Secure Thinking with Elegant Code</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
@@ -950,7 +1098,5 @@ export default function Portfolio() {
           </div>
         </div>
       </footer>
-    </div>
   
-
-  )}
+  
