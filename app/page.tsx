@@ -1,5 +1,5 @@
 'use client';
-
+import './globals.css'
 import { useState, useEffect } from 'react';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaDatabase, FaGithub } from 'react-icons/fa';
 import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, ChevronDown, Code, Smartphone, Database, Cloud, Award, Heart, User, GraduationCap, Briefcase, FolderOpen, Wrench, Send } from 'lucide-react';

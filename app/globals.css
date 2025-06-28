@@ -37,6 +37,14 @@
     --radius: 0.5rem;
   }
 }
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
 @layer base {
   * {
@@ -49,16 +57,12 @@
 }
 
 @layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
   }
-  
-  .animate-slide-up {
-    animation: slideUp 1s ease-out forwards;
-  }
-  
-  .animate-bounce {
-    animation: bounce 2s infinite;
+
+  .animate-marquee-reverse {
+    animation: marquee-reverse 25s linear infinite;
   }
 }
 

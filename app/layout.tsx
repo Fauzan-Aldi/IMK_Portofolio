@@ -9,6 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('http://localhost:3000'),
   title: 'Flutter Developer Portfolio | Computer Engineering Graduate',
   description: 'Professional portfolio of a Computer Engineering graduate specializing in Flutter development. Showcasing mobile app projects, technical skills, and professional experience.',
   keywords: 'Flutter developer, Computer Engineering, Mobile app development, Cross-platform, Dart, Firebase, Portfolio',
