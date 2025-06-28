@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaDatabase, FaGithub } from 'react-icons/fa';
 import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, ChevronDown, Code, Smartphone, Database, Cloud, Award, Heart, User, GraduationCap, Briefcase, FolderOpen, Wrench, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,8 +11,69 @@ import { Textarea } from '@/components/ui/textarea';
 import img from '../img/aldi1.jpeg'; 
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
+import { Server,  Layers, GitBranch, Globe, Cpu, Palette, Zap, Monitor } from 'lucide-react';
+import React from 'react';
 
-
+type Skill = {
+  name: string;
+  icon: JSX.Element;
+  category: string;
+  color: string;
+};
+const skill: Skill[] = [
+  {
+    name: 'React',
+    category: 'Frontend',
+    icon: <FaReact />,
+    color: 'bg-blue-500',
+  },
+  {
+    name: 'Node.js',
+    category: 'Backend',
+    icon: <FaNodeJs />,
+    color: 'bg-green-600',
+  },
+  {
+    name: 'HTML5',
+    category: 'Markup',
+    icon: <FaHtml5 />,
+    color: 'bg-orange-500',
+  },
+  {
+    name: 'CSS3',
+    category: 'Style',
+    icon: <FaCss3Alt />,
+    color: 'bg-blue-600',
+  },
+  {
+    name: 'MySQL',
+    category: 'Database',
+    icon: <FaDatabase />,
+    color: 'bg-yellow-600',
+  },
+  {
+    name: 'GitHub',
+    category: 'Version Control',
+    icon: <FaGithub />,
+    color: 'bg-gray-800',
+  },
+];
+const skills: Skill[] = [
+  { name: 'Flutter', icon: <Smartphone className="w-6 h-6" />, category: 'Mobile Development', color: 'bg-blue-600' },
+  { name: 'React', icon: <Code className="w-6 h-6" />, category: 'Frontend', color: 'bg-cyan-500' },
+  { name: 'Node.js', icon: <Server className="w-6 h-6" />, category: 'Backend', color: 'bg-green-600' },
+  { name: 'Firebase', icon: <Database className="w-6 h-6" />, category: 'Database', color: 'bg-yellow-500' },
+  { name: 'AWS', icon: <Cloud className="w-6 h-6" />, category: 'Cloud Services', color: 'bg-orange-400' },
+  { name: 'TypeScript', icon: <Code className="w-6 h-6" />, category: 'Programming', color: 'bg-blue-700' },
+  { name: 'MongoDB', icon: <Database className="w-6 h-6" />, category: 'Database', color: 'bg-green-500' },
+  { name: 'Docker', icon: <Layers className="w-6 h-6" />, category: 'DevOps', color: 'bg-sky-500' },
+  { name: 'Git', icon: <GitBranch className="w-6 h-6" />, category: 'Version Control', color: 'bg-red-500' },
+  { name: 'Next.js', icon: <Globe className="w-6 h-6" />, category: 'Framework', color: 'bg-black' },
+  { name: 'Python', icon: <Cpu className="w-6 h-6" />, category: 'Programming', color: 'bg-yellow-400' },
+  { name: 'Tailwind CSS', icon: <Palette className="w-6 h-6" />, category: 'Styling', color: 'bg-teal-400' },
+  { name: 'GraphQL', icon: <Zap className="w-6 h-6" />, category: 'API', color: 'bg-pink-500' },
+  { name: 'Vue.js', icon: <Monitor className="w-6 h-6" />, category: 'Frontend', color: 'bg-emerald-500' },
+];
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -171,7 +233,8 @@ export default function Portfolio() {
 
 
           </div>
-          
+         </div> 
+         
           <div className="grid md:grid-cols-2 gap-12 items-start">
   {/* Bagian Kiri: Teks */}
   <div className="space-y-6 text-justify">
@@ -224,7 +287,8 @@ export default function Portfolio() {
     </div>
   </div>
   </div>
-            
+
+   <div>    
             <div className="flex justify-center md:justify-end">
             <div className="relative">
             <img 
@@ -320,18 +384,17 @@ export default function Portfolio() {
             <p className="text-gray-300 font-sans">My Professional Cybersecurity Journey</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             {/* Left Timeline */}
             <div className="relative pl-6 border-l-2 border-cyan-500/30 space-y-8">
           
               {/* BUG HUNTER */}
-              <div className="relative">
-              <span className="absolute -left-[1.1rem] top-3 w-3 h-3 bg-cyan-400 rounded-full"></span>
+              <div className="relative mt-[-80px]">
               <CardContent className="p-6 space-y-3">
             </CardContent>
             </div>
 
-                <CardContent className="p-6 space-y-3">
+                <CardContent className="p-6 space-y-3 text justify">
                   <h3 className="text-xl font-bold text-white">BUG HUNTER</h3>
                   <p className="text-sm text-gray-400">Agustus 2023 - Agustus 2024 | Pekerja Lepas</p>
                   <p className="text-sm text-cyan-400">BugCrowd</p>
@@ -394,7 +457,8 @@ export default function Portfolio() {
 
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 px-6 bg-gray-900/30">
+      <section id="projects" 
+      className="p-6 space-y-3">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -403,42 +467,43 @@ export default function Portfolio() {
             <p className="text-gray-300 font-sans">Projects That Reflect My Skills And Passion</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch tracking-normal">
+            
             {[
               {
-                title: "EcommMax Mobile",
-                description: "Full-featured e-commerce app with payment integration, real-time notifications, and advanced filtering.",
-                tech: ["Flutter", "Firebase", "Stripe API", "Provider"],
+                title: "Blobcat Fast Web Login Page Bruteforce Tool",
+                description: "Blobcat adalah alat brute-force login web berbasis Python yang menggunakan requests dan multithreading untuk pengujian cepat.",
+                tech: ["Multithreading", "User-Agent", "Python"],
                 color: "cyan"
               },
               {
-                title: "HealthTracker Pro",
-                description: "Health monitoring app with biometric tracking, data visualization, and doctor consultation features.",
-                tech: ["Flutter", "SQLite", "Charts", "Sensors"],
+                title: "Simple Vulnerable Web Application",
+                description: "Aplikasi web ini dibuat khusus untuk tujuan edukasi, yaitu untuk mendemonstrasikan berbagai kerentanan keamanan pada web.",
+                tech: ["SimpleVuln", "VulnWeb Report", "Analyzer"],
                 color: "blue"
               },
               {
-                title: "TaskFlow Manager",
-                description: "Project management tool with team collaboration, real-time updates, and productivity analytics.",
-                tech: ["Flutter", "Firebase", "WebRTC", "Bloc"],
+                title:"Enumeration of Buffer Overflow Protections BOF",
+                description: "BOF digunakan untuk menghitung proses sistem dan mengidentifikasi tingkat proteksi, serta menampilkan info layanan, pengguna dll.",
+                tech: ["MakeFile", "Api", "Program C"],
                 color: "purple"
               },
               {
-                title: "CryptoWatch Live",
-                description: "Cryptocurrency portfolio tracker with real-time prices, news feed, and trading alerts.",
-                tech: ["Flutter", "REST API", "WebSocket", "Riverpod"],
+                title: "Password Vault",
+                description: "aplikasi penyimpan password aman. Cukup ingat satu password utama, dan semua password akunmu akan disimpan terenkripsi.",
+                tech: ["Enkripsi", "log Aktivitas", "Python"],
                 color: "green"
               },
               {
-                title: "SocialHub Connect",
-                description: "Social networking app with messaging, media sharing, and community features.",
-                tech: ["Flutter", "Firebase", "Cloud Storage", "FCM"],
+                title: "Bug Platform Web3",
+                description: "Mengungkap Celah Keamanan yang Dapat Dieksploitasi dalam Kontrak Cerdas untuk pengembangan oracle semantik otomatis.",
+                tech: ["Out of scope", "Bisa dideteksi", "Butuh oracle"],
                 color: "pink"
               },
               {
-                title: "LearnFlow Academy",
-                description: "E-learning platform with video streaming, progress tracking, and interactive quizzes.",
-                tech: ["Flutter", "Video Player", "SQLite", "GetX"],
+                title: "CVE-2022-21661",
+                description: "PoC Python untuk CVE-2022-21661, adaptasi dari versi Go z92g untuk demonstrasi kerentanan secara praktis.",
+                tech: ["Proof of Concept", "RCE", "Python"],
                 color: "orange"
               }
             ].map((project, index) => (
@@ -454,7 +519,7 @@ export default function Portfolio() {
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-300 mb-4 text-sm leading-relaxed">
+                  <p className="text-sm-200 mb-4 text-sm text-justify">
                     {project.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -472,74 +537,65 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Skills & Technologies
-            </h2>
-            <p className="text-gray-300 font-sans">Technologies I’m Confident Working With</p>
+  
+    <section id="skills" className="py-20 px-6">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+            Skills & Technologies
+          </h2>
+          <p className="text-gray-300 font-sans">Technologies I’m Confident Working With</p>
+        </div>
+
+        {/* Animated Skills Marquee */}
+        <div className="relative overflow-hidden py-8">
+          {/* Gradient overlays */}
+          <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-black to-transparent z-10" />
+          <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-black to-transparent z-10" />
+
+          {/* First marquee row */}
+          <div className="flex animate-marquee space-x-8 mb-8">
+          {[...skills, ...skills].map((skill: Skill, index: number) => (
+              <div key={`row1-${index}`} className="flex-shrink-0 group cursor-pointer">
+                <div className="flex items-center space-x-4 px-6 py-4 rounded-full bg-gray-900 border border-gray-700 hover:border-gray-500 transition-all duration-300 transform hover:scale-105 min-w-[200px]">
+                  <div className={`flex items-center justify-center w-12 h-12 rounded-full ${skill.color} text-white group-hover:scale-110 transition-transform duration-300`}>
+                    {skill.icon}
+                  </div>
+                  <div className="text-left">
+                    <h3 className="text-white font-semibold text-lg group-hover:text-cyan-400 transition-colors duration-300">
+                      {skill.name}
+                    </h3>
+                    <p className="text-gray-400 text-sm font-light">{skill.category}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                category: "Mobile Development",
-                icon: <Smartphone className="w-8 h-8" />,
-                skills: ["Flutter", "Dart", "iOS", "Android", "React Native"],
-                color: "cyan"
-              },
-              {
-                category: "Backend & Database",
-                icon: <Database className="w-8 h-8" />,
-                skills: ["Firebase", "Supabase", "SQLite", "MongoDB", "PostgreSQL"],
-                color: "blue"
-              },
-              {
-                category: "Cloud & DevOps",
-                icon: <Cloud className="w-8 h-8" />,
-                skills: ["AWS", "Google Cloud", "Docker", "CI/CD", "Git"],
-                color: "purple"
-              },
-              {
-                category: "Programming",
-                icon: <Code className="w-8 h-8" />,
-                skills: ["Dart", "JavaScript", "TypeScript", "Python", "Java"],
-                color: "green"
-              }
-            ].map((skillGroup, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300 group">
-                <CardContent className="p-6 text-center">
-                  <div className={`inline-flex p-4 rounded-lg mb-4 bg-${skillGroup.color}-500/20`}>
-                    <div className={`text-${skillGroup.color}-400`}>
-                      {skillGroup.icon}
-                    </div>
+
+          {/* Second marquee row (reverse) */}
+          <div className="flex animate-marquee-reverse space-x-8">
+          {[...skills, ...skills].reverse().map((skill: Skill, index: number) => (
+              <div key={`row2-${index}`} className="flex-shrink-0 group cursor-pointer">
+                <div className="flex items-center space-x-4 px-6 py-4 rounded-full bg-gray-900 border border-gray-700 hover:border-gray-500 transition-all duration-300 transform hover:scale-105 min-w-[200px]">
+                  <div className={`flex items-center justify-center w-12 h-12 rounded-full ${skill.color} text-white group-hover:scale-110 transition-transform duration-300`}>
+                    {skill.icon}
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-4">{skillGroup.category}</h3>
-                  <div className="space-y-2">
-                    {skillGroup.skills.map((skill, skillIndex) => (
-                      <div key={skillIndex} className="flex justify-between items-center">
-                        <span className="text-gray-300 text-sm">{skill}</span>
-                        <div className="flex space-x-1">
-                          {[...Array(5)].map((_, i) => (
-                            <div
-                              key={i}
-                              className={`w-2 h-2 rounded-full ${
-                                i < 4 ? 'bg-cyan-400' : 'bg-gray-600'
-                              }`}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    ))}
+                  <div className="text-left">
+                    <h3 className="text-white font-semibold text-lg group-hover:text-purple-400 transition-colors duration-300">
+                      {skill.name}
+                    </h3>
+                    <p className="text-gray-400 text-sm font-light">{skill.category}</p>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
-      </section>
+      </div>
+    </section>
+    
 
+              
       {/* Certifications Section */}
       <section id="certifications" className="py-20 px-6 bg-gray-900/30">
         <div className="max-w-6xl mx-auto">
@@ -756,5 +812,6 @@ export default function Portfolio() {
         </div>
       </footer>
     </div>
-  );
-}
+  
+
+  )}
