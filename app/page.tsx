@@ -13,13 +13,28 @@ import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
 import { Server,  Layers, GitBranch, Globe, Cpu, Palette, Zap, Monitor } from 'lucide-react';
 import React from 'react';
+import { FaPython } from 'react-icons/fa';
+import Image from 'next/image';
+import SkillsSection from '@/components/SkillsSection';
+import { Bug } from 'lucide-react';
+import {Network,} from 'lucide-react';
+import { FlaskConical } from 'lucide-react';
+import { Terminal } from 'lucide-react';
+import { FileCode } from 'lucide-react';
+import { 
+  ServerCog, 
+  ServerCrash, 
+  DatabaseBackup, 
+  HardDriveDownload, 
 
+} from 'lucide-react';
 type Skill = {
   name: string;
   icon: JSX.Element;
   category: string;
   color: string;
 };
+
 const skill: Skill[] = [
   {
     name: 'React',
@@ -57,23 +72,193 @@ const skill: Skill[] = [
     icon: <FaGithub />,
     color: 'bg-gray-800',
   },
+  {
+    name: 'React',
+    category: 'Frontend',
+    color: 'bg-blue-500',
+    icon: <FaReact size={24} />,
+  },
+  {
+    name: 'No=de.js',
+    category: 'Backend',
+    color: 'bg-green-600',
+    icon: <FaNodeJs size={24} />,
+  },
+  {
+    name: 'Custom Icon',
+    category: 'Tooling',
+    color: 'bg-yellow-600',
+    icon: (
+      <Image
+        src="/icons/my-custom-icon.png"
+        alt="My Custom Icon"
+        width={24}
+        height={24}
+      />
+    ),
+  },
+
 ];
-const skills: Skill[] = [
-  { name: 'Flutter', icon: <Smartphone className="w-6 h-6" />, category: 'Mobile Development', color: 'bg-blue-600' },
-  { name: 'React', icon: <Code className="w-6 h-6" />, category: 'Frontend', color: 'bg-cyan-500' },
-  { name: 'Node.js', icon: <Server className="w-6 h-6" />, category: 'Backend', color: 'bg-green-600' },
-  { name: 'Firebase', icon: <Database className="w-6 h-6" />, category: 'Database', color: 'bg-yellow-500' },
-  { name: 'AWS', icon: <Cloud className="w-6 h-6" />, category: 'Cloud Services', color: 'bg-orange-400' },
-  { name: 'TypeScript', icon: <Code className="w-6 h-6" />, category: 'Programming', color: 'bg-blue-700' },
-  { name: 'MongoDB', icon: <Database className="w-6 h-6" />, category: 'Database', color: 'bg-green-500' },
-  { name: 'Docker', icon: <Layers className="w-6 h-6" />, category: 'DevOps', color: 'bg-sky-500' },
-  { name: 'Git', icon: <GitBranch className="w-6 h-6" />, category: 'Version Control', color: 'bg-red-500' },
-  { name: 'Next.js', icon: <Globe className="w-6 h-6" />, category: 'Framework', color: 'bg-black' },
-  { name: 'Python', icon: <Cpu className="w-6 h-6" />, category: 'Programming', color: 'bg-yellow-400' },
-  { name: 'Tailwind CSS', icon: <Palette className="w-6 h-6" />, category: 'Styling', color: 'bg-teal-400' },
-  { name: 'GraphQL', icon: <Zap className="w-6 h-6" />, category: 'API', color: 'bg-pink-500' },
-  { name: 'Vue.js', icon: <Monitor className="w-6 h-6" />, category: 'Frontend', color: 'bg-emerald-500' },
+const skillsTop: Skill[] = [
+  {
+    name: 'Burp Suite',
+    icon: <Bug className="w-6 h-6" />,
+    category: 'Web Penetration Testing',
+    color: '',
+  },
+  {
+    name: 'Nmap',
+    icon: <Network className="w-6 h-6" />,
+    category: 'Network Scanning',
+    color: '',
+  },
+  {
+    name: 'Metasploit',
+    icon: <Server className="w-6 h-6" />,
+    category: 'Exploit Framework',
+    color: '',
+  },
+  {
+    name: 'John the Ripper',
+    icon: <Database className="w-6 h-6" />,
+    category: 'Password Cracking',
+    color: '',
+  },
+  {
+    name: 'Parrot OS',
+    icon: <Cloud className="w-6 h-6" />,
+    category: 'Penetration Testing',
+    color: '',
+  },
+  {
+    name: 'OpenVas',
+    icon: <Database className="w-6 h-6" />,
+    category: 'Vulnerability Scanner',
+    color: '',
+  },
+  {
+    name: 'OSINT Tools',
+    icon: <Layers className="w-6 h-6" />,
+    category: 'Information Gathering',
+    color: '',
+  },
+  {
+    name: 'Snort',
+    icon: <Globe className="w-6 h-6" />,
+    category: 'Intrusion Detection System',
+    color: '',
+  },
+ 
 ];
+const skillsBottom: Skill[] = [
+  { 
+    name: 'MySQL', 
+    icon: <ServerCog className="w-6 h-6" />, 
+    category: 'Relational Database', 
+    color: '' 
+  },
+  {
+    name: 'MongoDB',
+    icon: <DatabaseBackup className="w-6 h-6" />,
+    category: 'NoSQL Database',
+    color: ''
+  },
+  {
+    name: 'Redis',
+    icon: <HardDriveDownload className="w-6 h-6" />,
+    category: 'In-Memory Key-Value Store',
+    color: ''
+  },
+  {
+    name: 'Firebase',
+    icon: <Cloud className="w-6 h-6" />,
+    category: 'Realtime NoSQL Database',
+    color: ''
+  },
+  {
+    
+    name: 'Python',
+    icon: <Cpu className="w-6 h-6" />,
+    category: 'Programming Language',
+    color: '',
+  },
+  {
+    name: 'Git',
+    icon: <GitBranch className="w-6 h-6" />,
+    category: 'Version Control',
+    color: '',
+  },
+
+  {
+    name: 'TypeScript',
+  icon: <FileCode className="w-6 h-6" />,
+  category: 'Programming Language',
+  color: '',
+  },
+  {
+    name: 'Tailwind CSS',
+    icon: <Palette className="w-6 h-6" />,
+    category: 'CSS Framework',
+    color: '',
+  },
+  {
+    name: 'GraphQL',
+    icon: <Zap className="w-6 h-6" />,
+    category: 'API Query Language',
+    color: '',
+  },
+  {
+    name: 'Vue.js',
+    icon: <Monitor className="w-6 h-6" />,
+    category: 'Frontend Framework',
+    color: '',
+  },
+  {
+    name: 'Node.js',
+    icon: <Cpu className="w-6 h-6" />,
+    category: 'Runtime Environment',
+    color: '',
+  },
+  {
+    name: 'Express.js',
+    icon: <Server className="w-6 h-6" />,
+    category: 'Web Framework',
+    color: '',
+  },
+  {
+    name: 'Laravel',
+    icon: <Server className="w-6 h-6" />,
+    category: 'PHP Framework',
+    color: '',
+  },
+  {
+    name: 'Spring Boot',
+    icon: <Zap className="w-6 h-6" />,
+    category: 'Java Backend Framework',
+    color: '',
+  },
+  {
+    name: 'Django',
+    icon: <Layers className="w-6 h-6" />,
+    category: 'Python Framework',
+    color: '',
+  },
+  {
+    name: 'Flask',
+    icon: <FlaskConical className="w-6 h-6" />,
+    category: 'Web Framework',
+    color: '',
+  },
+  {
+    name: 'PHP',
+  icon: <Terminal className="w-6 h-6" />,
+  category: 'Backend Programming',
+  color: '',
+  },
+
+];
+
+
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -140,7 +325,7 @@ export default function Portfolio() {
   </div>
 
   {/* Name */}
-  <span className="text-base md:text-lg font-semibold bg-gradient-to-r from-white via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+  <span className="text-lg md:text-xl font-semibold tracking-tight bg-gradient-to-r from-green-400 via-cyan-500 to-lime-300 bg-clip-text text-transparent">
     Fauzan Aldi
   </span>
 </div>
@@ -408,7 +593,7 @@ export default function Portfolio() {
 
               {/* PENETRATION TESTER */}
             
-                <CardContent className="p-6 space-y-3 text-justify">
+                <CardContent className="p-6 space-y-3 text-justify -translate-y-6">
                   <h3 className="text-xl font-bold text-white">PENETRATION TESTER</h3>
                   <p className="text-sm text-gray-400">Juni 2022 - Juni 2024 | Pekerja Lepas</p>
                   <p className="text-sm text-cyan-400">Intigriti</p>
@@ -457,8 +642,7 @@ export default function Portfolio() {
 
 
       {/* Projects Section */}
-      <section id="projects" 
-      className="p-6 space-y-3">
+      <section id="projects" className="py-20 px-6 bg-black">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -541,8 +725,8 @@ export default function Portfolio() {
     <section id="skills" className="py-20 px-0">
       <div className="w-full mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 ">
-            Skills & Technologies
+        <h2 className="text-4xl font-bold mb-4 leading-[1.4] bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent inline-block">
+              Skills & Technologies
           </h2>
           <p className="text-gray-300 font-sans">Technologies I’m Confident Working With</p>
         </div>
@@ -554,8 +738,8 @@ export default function Portfolio() {
             {/* Gradient overlays */}
 
           {/* First marquee row */}
-          <div className="flex animate-marquee space-x-8 mb-8">
-          {[...skills, ...skills, ...skills].map((skill: Skill, index: number) => (
+          <div className="flex animate-marquee space-x-8 mb-8 min-w-fit">
+          {[...skillsTop, ...skillsTop, ...skillsTop].map((skill: Skill, index: number) => (
               <div key={`row1-${index}`} className="flex-shrink-0 group cursor-pointer">
                 <div className="flex items-center space-x-4 px-6 py-4 rounded-">
                   <div className={`flex items-center justify-center w-12 h-12 rounded-full ${skill.color} text-white group-hover:scale-110 transition-transform duration-300`}>
@@ -573,8 +757,8 @@ export default function Portfolio() {
           </div>
 
           {/* Second marquee row (reverse) */}
-          <div className="flex animate-marquee-reverse space-x-8">
-          {[...skills, ...skills, ...skills].reverse().map((skill: Skill, index: number) => (
+          <div className="flex animate-marquee-reverse space-x-8 min-w-fit">
+          {[...skillsBottom, ...skillsBottom, ...skillsBottom].reverse().map((skill: Skill, index: number) => (
               <div key={`row2-${index}`} className="flex-shrink-0 group cursor-pointer">
                 <div className="flex items-center space-x-4 px-6 py-4 rounded-full">
                   <div className={`flex items-center justify-center w-12 h-12 rounded-full ${skill.color} text-white group-hover:scale-110 transition-transform duration-300`}>
@@ -597,7 +781,7 @@ export default function Portfolio() {
 
               
       {/* Certifications Section */}
-      <section id="certifications" className="py-20 px-6 bg-gray-900/30">
+      <section id="certifications" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -606,51 +790,6 @@ export default function Portfolio() {
             <p className="text-gray-300 font-sans">Certificates From Courses, Programs, And Institutions</p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            {[
-              {
-                title: "Google Associate Android Developer",
-                issuer: "Google",
-                date: "2024",
-                color: "cyan"
-              },
-              {
-                title: "AWS Cloud Practitioner",
-                issuer: "Amazon Web Services",
-                date: "2023",
-                color: "blue"
-              },
-              {
-                title: "Flutter Certified Developer",
-                issuer: "Flutter Institute",
-                date: "2023",
-                color: "purple"
-              },
-              {
-                title: "Firebase Certified",
-                issuer: "Google Cloud",
-                date: "2022",
-                color: "green"
-              }
-            ].map((cert, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4">
-                    <div className={`p-3 bg-${cert.color}-500/20 rounded-lg`}>
-                      <Award className={`w-8 h-8 text-${cert.color}-400`} />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="text-lg font-bold text-white mb-1">{cert.title}</h3>
-                      <p className="text-gray-300 text-sm mb-2">{cert.issuer}</p>
-                      <Badge className={`bg-${cert.color}-500/20 text-${cert.color}-400 border-${cert.color}-500/30`}>
-                        {cert.date}
-                      </Badge>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
         </div>
       </section>
 

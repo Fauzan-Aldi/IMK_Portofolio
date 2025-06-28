@@ -58,12 +58,12 @@
 
 @layer utilities {
   .animate-marquee {
-    animation: marquee 30s linear infinite;
+    animation: marquee 100s linear infinite;
     animation-delay: 0.5s;
   }
 
   .animate-marquee-reverse {
-    animation: marquee-reverse 30s linear infinite;
+    animation: marquee-reverse 100s linear infinite;
     animation-delay: 0.5s;
 
     .marquee-item {
