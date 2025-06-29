@@ -112,17 +112,17 @@ const articles = [
   {
     id: 1,
     title: "Forensik Digital untuk Investigasi Kejahatan Siber",
-    excerpt: "Penelitian tentang teknik forensik digital dalam menganalisis bukti kejahatan siber dengan fokus pada pemulihan data dan analisis artefak.",
+    excerpt: "Penelitian tentang teknik forensik digital dalam menganalisis bukti kejahatan siber dengan fokus pada pemulihan data.",
     category: "Digital Forensics",
     readTime: "17 min",
     date: "Dec 15, 2024",
-    tags: ["Digital Forensics", "Investigation", "Data Recovery"],
+    tags: ["Digital Forensics", "Investigation", "Recovery"],
     type: "research",
     link: "https://journal.umy.ac.id/index.php/mt"
   },
   {
     id: 2,
-    title: "Implementasi Zero Trust Architecture pada Cloud Computing",
+    title: "Implementasi Zero Trust Architecture pada Cloud ",
     excerpt: "Studi implementasi arsitektur Zero Trust untuk meningkatkan keamanan layanan cloud computing dengan pendekatan never trust.",
     category: "Cloud Security",
     readTime: "20 min",
@@ -134,7 +134,7 @@ const articles = [
   {
     id: 3,
     title: "Machine Learning untuk Deteksi Anomali Keamanan Jaringan",
-    excerpt: "Pengembangan sistem deteksi intrusi menggunakan algoritma machine learning untuk mengidentifikasi pola anomali pada traffic.",
+    excerpt: "Pengembangan sistem deteksi intrusi menggunakan algoritma machine learning untuk mengidentifikasi pola anomali.",
     category: "AI Security",
     readTime: "19 min",
     date: "Oct 22, 2024",
@@ -145,18 +145,18 @@ const articles = [
   {
     id: 4,
     title: "Blockchain Technology untuk Keamanan Data Healthcare",
-    excerpt: "Analisis penerapan teknologi blockchain dalam mengamankan data kesehatan elektronik dengan fokus pada privacy dan integritas data.",
+    excerpt: "Analisis penerapan teknologi blockchain dalam mengamankan data kesehatan elektronik dengan fokus pada privacy.",
     category: "Blockchain Security",
     readTime: "16 min",
     date: "Sep 18, 2024",
-    tags: ["Blockchain", "Healthcare Security", "Data Privacy"],
+    tags: ["Blockchain", "Healthcare Security", "Data"],
     type: "research",
     link: "https://journal.its.ac.id/index.php/jiki"
   },
   {
     id: 5,
     title: "Analisis Kerentanan IoT Device dalam Smart Home System",
-    excerpt: "Penelitian keamanan perangkat Internet of Things (IoT) dalam sistem rumah pintar dengan identifikasi vektor serangan dan mitigasi.",
+    excerpt: "Penelitian keamanan perangkat Internet of Things (IoT) dalam sistem rumah pintar dengan identifikasi vektor serangan.",
     category: "IoT Security",
     readTime: "18 min",
     date: "Aug 25, 2024",
@@ -167,11 +167,11 @@ const articles = [
   {
     id: 6,
     title: "Cryptographic Hash Function untuk Integrity Verification",
-    excerpt: "Studi perbandingan fungsi hash kriptografi modern untuk verifikasi integritas data dengan analisis performa dan resistensi serangan",
+    excerpt: "Studi perbandingan fungsi hash kriptografi modern untuk verifikasi integritas data dengan analisis performa.",
     category: "Cryptography",
     readTime: "15 min",
     date: "Jul 20, 2024",
-    tags: ["Hash", "Data Integrity", "Cryptographic Security"],
+    tags: ["Hash", "Data Integrity", "Cryptographic"],
     type: "research",
     link: "https://journal.uii.ac.id/Snati",
     color: ""
@@ -1307,7 +1307,7 @@ export default function Portfolio() {
     
     <div className="grid md:grid-cols-2 gap-12">
       <motion.div 
-        className="space-y-8 ml-[-13px] sm:ml-0"
+        className="space-y-8 ml-[-15px] sm:ml-0"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -1334,7 +1334,7 @@ export default function Portfolio() {
       </motion.div>
       
       <motion.div
-        className="space-y-8 ml-[-13px] sm:ml-0"
+        className="space-y-8 ml-[-15px] sm:ml-0"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
