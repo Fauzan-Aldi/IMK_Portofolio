@@ -1307,7 +1307,7 @@ export default function Portfolio() {
     
     <div className="grid md:grid-cols-2 gap-12">
       <motion.div 
-        className="space-y-8"
+        className="space-y-8 ml-[-8px] sm:ml-0"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
@@ -1334,6 +1334,7 @@ export default function Portfolio() {
       </motion.div>
       
       <motion.div
+        className="space-y-8 ml-[-8px] sm:ml-0"
         initial={{ opacity: 0, x: 50 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
