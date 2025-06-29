@@ -1289,7 +1289,7 @@ export default function Portfolio() {
           </div>
         </div>
         {/* Contact Section */}
-<SectionWrapper id="contact" className="py-12 sm:px-6 px-1">
+<SectionWrapper id="contact" className="py-20 px-6">
   <div className="max-w-4xl mx-auto">
     <div className="text-center mb-16">
       <motion.h2 
