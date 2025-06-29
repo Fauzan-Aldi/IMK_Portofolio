@@ -28,7 +28,130 @@ import {
   HardDriveDownload, 
 } from 'lucide-react';
 import { StarIcon } from '@heroicons/react/24/solid';
+import { 
+  BookOpen,
+  Shield,
+  ArrowUp,
+  Coffee,
+  Gamepad2,
+  Music,
+  Camera,
+  Dumbbell,
+  Plane
+} from 'lucide-react';
+import { useInView } from 'react-intersection-observer';
+import { ReactNode } from 'react';
+import {  Clock, Calendar } from 'lucide-react';
+type AuthState = 'login' | 'dashboard' | 'portfolio';
 
+const articles = [
+  {
+    id: 1,
+    title: "Forensik Digital untuk Investigasi Kejahatan Siber",
+    excerpt: "Penelitian tentang teknik forensik digital dalam menganalisis bukti kejahatan siber dengan fokus pada pemulihan data dan analisis artefak.",
+    category: "Digital Forensics",
+    readTime: "17 min",
+    date: "Dec 15, 2024",
+    tags: ["Digital Forensics", "Investigation", "Data Recovery"],
+    type: "research",
+    link: "https://journal.umy.ac.id/index.php/mt"
+  },
+  {
+    id: 2,
+    title: "Implementasi Zero Trust Architecture pada Cloud Computing",
+    excerpt: "Studi implementasi arsitektur Zero Trust untuk meningkatkan keamanan layanan cloud computing dengan pendekatan never trust.",
+    category: "Cloud Security",
+    readTime: "20 min",
+    date: "Nov 28, 2024",
+    tags: ["Zero Trust", "Cloud Security", "Network"],
+    type: "research",
+    link: "https://ejournal.unsri.ac.id/index.php/jsi"
+  },
+  {
+    id: 3,
+    title: "Machine Learning untuk Deteksi Anomali Keamanan Jaringan",
+    excerpt: "Pengembangan sistem deteksi intrusi menggunakan algoritma machine learning untuk mengidentifikasi pola anomali pada traffic.",
+    category: "AI Security",
+    readTime: "19 min",
+    date: "Oct 22, 2024",
+    tags: ["Machine Learning", "Detection", "Network"],
+    type: "research",
+    link: "https://jurnal.ugm.ac.id/ijccs"
+  },
+  {
+    id: 4,
+    title: "Blockchain Technology untuk Keamanan Data Healthcare",
+    excerpt: "Analisis penerapan teknologi blockchain dalam mengamankan data kesehatan elektronik dengan fokus pada privacy dan integritas data.",
+    category: "Blockchain Security",
+    readTime: "16 min",
+    date: "Sep 18, 2024",
+    tags: ["Blockchain", "Healthcare Security", "Data Privacy"],
+    type: "research",
+    link: "https://journal.its.ac.id/index.php/jiki"
+  },
+  {
+    id: 5,
+    title: "Analisis Kerentanan IoT Device dalam Smart Home System",
+    excerpt: "Penelitian keamanan perangkat Internet of Things (IoT) dalam sistem rumah pintar dengan identifikasi vektor serangan dan mitigasi.",
+    category: "IoT Security",
+    readTime: "18 min",
+    date: "Aug 25, 2024",
+    tags: ["IoT", "Smart Home", "Device Vulnerability"],
+    type: "research",
+    link: "https://ejournal.unp.ac.id/index.php/jtik"
+  },
+  {
+    id: 6,
+    title: "Cryptographic Hash Function untuk Integrity Verification",
+    excerpt: "Studi perbandingan fungsi hash kriptografi modern untuk verifikasi integritas data dengan analisis performa dan resistensi serangan",
+    category: "Cryptography",
+    readTime: "15 min",
+    date: "Jul 20, 2024",
+    tags: ["Hash", "Data Integrity", "Cryptographic Security"],
+    type: "research",
+    link: "https://journal.uii.ac.id/Snati",
+    color: ""
+  }
+];
+
+const interests: Interest[] = [
+  {
+    name: "Cybersecurity Research",
+    icon: <Shield className="w-6 h-6" />,
+    description: "Researching new vulnerabilities and attack vectors",
+    color: "from-red-500 to-red-600"
+  },
+  {
+    name: "CTF Competitions",
+    icon: <Gamepad2 className="w-6 h-6" />,
+    description: "Participating in Capture The Flag challenges",
+    color: "from-blue-500 to-blue-600"
+  },
+  {
+    name: "Tech Articles",
+    icon: <BookOpen className="w-6 h-6" />,
+    description: "Reading and writing technical security articles",
+    color: "from-green-500 to-green-600"
+  },
+  {
+    name: "Open Source",
+    icon: <Code className="w-6 h-6" />,
+    description: "Contributing to security tools and frameworks",
+    color: "from-purple-500 to-purple-600"
+  },
+  {
+    name: "Bug Bounty",
+    icon: <Terminal className="w-6 h-6" />,
+    description: "Hunting for bugs in web applications",
+    color: "from-orange-500 to-orange-600"
+  },
+  {
+    name: "Photography",
+    icon: <Camera className="w-6 h-6" />,
+    description: "Capturing moments and exploring creativity",
+    color: "from-pink-500 to-pink-600"
+  }
+];
 
 
 type Skill = {
@@ -45,6 +168,82 @@ interface Certificate {
   issuer: string;
   year: string;
 }
+interface Interest {
+  name: string;
+  icon: JSX.Element;
+  description: string;
+  color: string;
+}
+interface SectionWrapperProps {
+  children: ReactNode;
+  id: string;
+  className?: string;
+}
+
+interface User {
+  email: string;
+  name: string;
+  avatar?: string;
+}
+function SectionWrapper({ children, id, className = '' }: SectionWrapperProps) {
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: false
+  });
+
+  return (
+    <motion.section
+      ref={ref}
+      id={id}
+      className={`py-20 px-6 ${className}`}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      {children}
+    </motion.section>
+  );
+}
+
+const interest: Interest[] = [
+  {
+    name: "Cybersecurity Research",
+    icon: <Shield className="w-6 h-6" />,
+    description: "Researching new vulnerabilities and attack vectors",
+    color: "from-red-500 to-red-600"
+  },
+  {
+    name: "CTF Competitions",
+    icon: <Gamepad2 className="w-6 h-6" />,
+    description: "Participating in Capture The Flag challenges",
+    color: "from-blue-500 to-blue-600"
+  },
+  {
+    name: "Tech Articles",
+    icon: <BookOpen className="w-6 h-6" />,
+    description: "Reading and writing technical security articles",
+    color: "from-green-500 to-green-600"
+  },
+  {
+    name: "Open Source",
+    icon: <Code className="w-6 h-6" />,
+    description: "Contributing to security tools and frameworks",
+    color: "from-purple-500 to-purple-600"
+  },
+  {
+    name: "Bug Bounty",
+    icon: <Terminal className="w-6 h-6" />,
+    description: "Hunting for bugs in web applications",
+    color: "from-orange-500 to-orange-600"
+  },
+  {
+    name: "Photography",
+    icon: <Camera className="w-6 h-6" />,
+    description: "Capturing moments and exploring creativity",
+    color: "from-pink-500 to-pink-600"
+  }
+];
+
 
 const skill: Skill[] = [
   {
@@ -404,6 +603,7 @@ function CertificateCard({ cert }: { cert: Certificate }) {
     </Card>
   );
 }
+
 export default function Portfolio() {
   const [mounted, setMounted] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
@@ -436,6 +636,7 @@ export default function Portfolio() {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
   };
+  
 
   return (
     <div className="bg-black text-white min-h-screen">
@@ -443,10 +644,10 @@ export default function Portfolio() {
 <nav className="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
   <div className="max-w-7xl mx-auto px-6 py-4">
     <div className="flex justify-between items-center">
-      
-      {/* Left: Icons + Name */}
-     {/* Left: Icons + Name */}
 <div className="flex items-center space-x-3">
+  
+
+  
   {/* Icons */}
   <div className="flex space-x-2">
     <a
@@ -490,6 +691,11 @@ export default function Portfolio() {
           </button>
         ))}
       </div>
+
+
+
+
+            
                
           </div>
         </div>
@@ -922,9 +1128,105 @@ export default function Portfolio() {
         </div>
       </div>
     </section>
-    
 
-              
+    
+    {/* Interests Section */}
+<SectionWrapper id="interests">
+  <div className="max-w-6xl mx-auto">
+    {/* Header */}
+    <div className="text-center mb-16">
+      <motion.h2 
+        className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        Hack & Reading Articles
+      </motion.h2>
+      <p className="text-gray-300 font-sans">
+      Sharing articles that fuel my passion for cybersecurity
+      </p>
+    </div>
+
+    {/* Articles Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {articles.map((article, index) => (
+        <motion.div
+          key={article.id}
+          className="group bg-gray-800/40 rounded-xl p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          whileHover={{ y: -4 }}
+        >
+          {/* Header */}
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-center space-x-3">
+              <div className={`p-2 rounded-lg bg-gradient-to-br ${article.color} bg-opacity-20`}>
+                {article.type === 'hack' ? (
+                  <Shield className="h-4 w-4 text-cyan-400" />
+                ) : (
+                  <BookOpen className="h-4 w-4 text-blue-400" />
+                )}
+              </div>
+              <div>
+                <span className="text-sm font-medium text-gray-300">{article.category}</span>
+                <div className="flex items-center space-x-3 text-xs text-gray-500 mt-1">
+                  <div className="flex items-center space-x-1">
+                    <Calendar className="h-3 w-3" />
+                    <span>{article.date}</span>
+                  </div>
+                  <div className="flex items-center space-x-1">
+                    <Clock className="h-3 w-3" />
+                    <span>{article.readTime}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button className="p-2 rounded-full bg-gray-700/50 hover:bg-gray-600/50 transition-colors opacity-0 group-hover:opacity-100">
+              <ExternalLink className="h-4 w-4 text-gray-300" />
+            </button>
+          </div>
+
+          {/* Title */}
+          <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+            {article.title}
+          </h3>
+
+          {/* Excerpt */}
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            {article.excerpt}
+          </p>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2">
+            {article.tags.map((tag, tagIndex) => (
+              <span
+                key={tagIndex}
+                className="px-2 py-1 text-xs rounded-md bg-gray-700/40 text-gray-300 border border-gray-600/30"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Stats */}
+    <motion.div
+      className="mt-16 text-center"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+    >
+    </motion.div>
+  </div>
+</SectionWrapper>
+
+     
+          
       {/* Certifications Section */}
       <section id="certifications" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
@@ -938,166 +1240,166 @@ export default function Portfolio() {
             ))}
           </div>
         </div>
+        {/* Contact Section */}
+<SectionWrapper id="contact" className="py-12 px-6">
+  <div className="max-w-4xl mx-auto">
+    <div className="text-center mb-16">
+      <motion.h2 
+        className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mt-20"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+      >
+        Get In Touch
+      </motion.h2>
+      <p className="text-gray-300 font-sans">
+        Do you have a project or question about cybersecurity? Just send us a message
+      </p>
+    </div>
+    
+    <div className="grid md:grid-cols-2 gap-12">
+      <motion.div 
+        className="space-y-8"
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        {[
+          { icon: <Mail className="w-6 h-6" />, title: "Email", value: "fauzanalditester@gmail.com" },
+          { icon: <Phone className="w-6 h-6 " />, title: "Phone", value: "+62 853 6340 7399" },
+          { icon: <MapPin className="w-6 h-6 " />, title: "Location", value: "Kepulauan Riau, Indonesia" }
+        ].map((contact, index) => (
+          <motion.div 
+            key={index}
+            className="flex items-center space-x-4 p-4 bg-gray-900/50 rounded-lg hover:bg-gray-800/50 transition-colors"
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="p-3 bg-cyan-500/20 rounded-lg">
+              {contact.icon}
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white">{contact.title}</h3>
+              <p className="text-gray-300">{contact.value}</p>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+      
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+      >
+        <form
+          className="space-y-6"
+          onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+
+            const form = e.currentTarget;
+            const name = (form.elements[0] as HTMLInputElement).value;
+            const email = (form.elements[1] as HTMLInputElement).value;
+            const subject = (form.elements[2] as HTMLInputElement).value;
+            const message = (form.elements[3] as HTMLTextAreaElement).value;
+
+            const mailtoLink = `mailto:fauzanaldi139@gmail.com?subject=${encodeURIComponent(subject)}&body=Nama: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0A%0APesan:%0A${encodeURIComponent(message)}`;
+
+            window.location.href = mailtoLink;
+          }}
+        >
+          <div>
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="w-full bg-gray-800/50 border border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none rounded-lg px-4 py-3 transition-colors"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="w-full bg-gray-800/50 border border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none rounded-lg px-4 py-3 transition-colors"
+              required
+            />
+          </div>
+          <div>
+            <input
+              type="text"
+              placeholder="Subject"
+              className="w-full bg-gray-800/50 border border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none rounded-lg px-4 py-3 transition-colors"
+              required
+            />
+          </div>
+          <div>
+            <textarea
+              placeholder="Your message..."
+              rows={5}
+              className="w-full bg-gray-800/50 border border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400 focus:outline-none rounded-lg px-4 py-3 resize-none transition-colors"
+              required
+            />
+          </div>
+          <motion.button
+            type="submit"
+            className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <Send className="w-4 h-4" />
+            <span>Send Message</span>
+          </motion.button>
+        </form>
+      </motion.div>
+      
+    </div>
+  </div>
+</SectionWrapper>
+
+         {/* Footer */}
+         <footer className="py-12 px-6">
+       <div className="max-w-6xl mx-auto">
+         <div className="flex flex-col md:flex-row justify-between items-center">
+           <div className="mb-4 md:mb-0">
+             <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+               Fauzan Aldi 
+             </div>
+             <p className="text-gray-400">Securing the digital world, one vulnerability at a time.</p>
+           </div>
+           <div className="flex space-x-6">
+             <motion.a 
+               href="https://github.com" 
+               className="text-gray-400 hover:text-cyan-400 transition-colors"
+               whileHover={{ scale: 1.2, rotate: 360 }}
+               transition={{ duration: 0.3 }}
+             >
+               <Github className="w-6 h-6" />
+             </motion.a>
+             <motion.a 
+               href="https://linkedin.com" 
+               className="text-gray-400 hover:text-cyan-400 transition-colors"
+               whileHover={{ scale: 1.2, rotate: 360 }}
+               transition={{ duration: 0.3 }}
+             >
+               <Linkedin className="w-6 h-6" />
+             </motion.a>
+             <motion.a 
+               href="mailto:fauzanalditester@gmail.com" 
+               className="text-gray-400 hover:text-cyan-400 transition-colors"
+               whileHover={{ scale: 1.2, rotate: 360 }}
+               transition={{ duration: 0.3 }}
+             >
+               <Mail className="w-6 h-6" />
+             </motion.a>
+           </div>
+         </div>
+         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
+           <p className="text-gray-400">
+           © 2024 Fauzan Aldi – Security Researcher. Built with React, TypeScript & Tailwind CSS.
+           </p>
+         </div>
+       </div>
+     </footer>
       </section>
     </div>
   );
-}
-      {/* Interests Section */}
-      <section id="interests" className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-            Hack & Reading Articles
-            </h2>
-            <p className="text-gray-300 font-sans">Articles That Merge Secure Thinking with Elegant Code</p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Open Source",
-                description: "Contributing to Flutter packages and maintaining developer tools",
-                icon: <Github className="w-8 h-8" />
-              },
-              {
-                title: "Tech Blogging",
-                description: "Writing about Flutter development and mobile app architecture",
-                icon: <Code className="w-8 h-8" />
-              },
-              {
-                title: "UI/UX Design",
-                description: "Creating beautiful and intuitive mobile app interfaces",
-                icon: <Heart className="w-8 h-8" />
-              }
-            ].map((interest, index) => (
-              <Card key={index} className="bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300 group text-center">
-                <CardContent className="p-8">
-                  <div className="inline-flex p-4 rounded-lg mb-4 bg-cyan-500/20 group-hover:bg-cyan-500/30 transition-all duration-300">
-                    <div className="text-cyan-400">
-                      {interest.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-3">{interest.title}</h3>
-                  <p className="text-gray-300">{interest.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="py-20 px-6 bg-gray-900/30">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              Get In Touch
-            </h2>
-            <p className="text-gray-300 font-sans">Open For Collaboration, Questions, Or Just A Hello</p>
-        
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <div className="flex items-center space-x-4">
-                <div className="p-3 bg-cyan-500/20 rounded-lg">
-                  <Mail className="w-6 h-6 text-cyan-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">Email</h3>
-                  <p className="text-gray-300">contact@example.com</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-4">
-                <div className="p-3 bg-blue-500/20 rounded-lg">
-                  <Phone className="w-6 h-6 text-blue-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">Phone</h3>
-                  <p className="text-gray-300">+1 (555) 123-4567</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-4">
-                <div className="p-3 bg-purple-500/20 rounded-lg">
-                  <MapPin className="w-6 h-6 text-purple-400" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">Location</h3>
-                  <p className="text-gray-300">Remote • Available Worldwide</p>
-                </div>
-              </div>
-            </div>
-            
-            <Card className="bg-gray-900/50 border-gray-800 backdrop-blur-sm">
-              <CardContent className="p-8">
-                <form className="space-y-6">
-                  <div>
-                    <Input
-                      placeholder="Your Name"
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400"
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      type="email"
-                      placeholder="Your Email"
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400"
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      placeholder="Subject"
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400"
-                    />
-                  </div>
-                  <div>
-                    <Textarea
-                      placeholder="Your message..."
-                      rows={5}
-                      className="bg-gray-800/50 border-gray-700 text-white placeholder-gray-400 focus:border-cyan-400 resize-none"
-                    />
-                  </div>
-                  <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white transition-all duration-300 hover:scale-105">
-                    <Send className="w-4 h-4 mr-2" />
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-12 px-6 border-t border-gray-800">
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
-                Flutter Developer Portfolio
-              </div>
-              <p className="text-gray-400">Building the future, one app at a time.</p>
-            </div>
-            <div className="flex space-x-6">
-              <a href="https://github.com" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                <Github className="w-6 h-6" />
-              </a>
-              <a href="https://linkedin.com" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                <Linkedin className="w-6 h-6" />
-              </a>
-              <a href="mailto:contact@example.com" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                <Mail className="w-6 h-6" />
-              </a>
-            </div>
-          </div>
-          <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-            <p className="text-gray-400">
-              © 2024 Flutter Developer Portfolio. Built with Next.js and Tailwind CSS.
-            </p>
-          </div>
-        </div>
-      </footer>
-  
-  
+} 
+   
