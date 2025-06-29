@@ -651,19 +651,19 @@ export default function Portfolio() {
   {/* Icons */}
   <div className="flex space-x-2">
     <a
-      href="https://github.com"
+      href="https://github.com/Fauzan-Aldi"
       className="p-1.5 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-105 shadow"
     >
       <Github className="w-4 h-4" />
     </a>
     <a
-      href="https://linkedin.com"
+      href="https://www.linkedin.com/in/fauzan-aldi/?profileId=ACoAAEouJEIBVUAGgqKuqi8WB1u4bYx4M-4VHFM"
       className="p-1.5 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-105 shadow"
     >
       <Linkedin className="w-4 h-4" />
     </a>
     <a
-      href="mailto:contact@example.com"
+      href="mailto:fauzanalditester@gmail.com"
       className="p-1.5 bg-gray-800/50 rounded-full hover:bg-cyan-500/20 transition-all duration-300 hover:scale-105 shadow"
     >
       <Mail className="w-4 h-4" />
@@ -1359,14 +1359,14 @@ export default function Portfolio() {
        <div className="max-w-6xl mx-auto">
          <div className="flex flex-col md:flex-row justify-between items-center">
            <div className="mb-4 md:mb-0">
-             <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+             <div className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-4">
                Fauzan Aldi 
              </div>
-             <p className="text-gray-400">Securing the digital world, one vulnerability at a time.</p>
+             <p className="text-gray-400">Securing The Digital World, One Vulnerability At A Time.</p>
            </div>
            <div className="flex space-x-6">
              <motion.a 
-               href="https://github.com" 
+               href="https://github.com/Fauzan-Aldi" 
                className="text-gray-400 hover:text-cyan-400 transition-colors"
                whileHover={{ scale: 1.2, rotate: 360 }}
                transition={{ duration: 0.3 }}
@@ -1374,7 +1374,7 @@ export default function Portfolio() {
                <Github className="w-6 h-6" />
              </motion.a>
              <motion.a 
-               href="https://linkedin.com" 
+               href="https://www.linkedin.com/in/fauzan-aldi/?profileId=ACoAAEouJEIBVUAGgqKuqi8WB1u4bYx4M-4VHFM" 
                className="text-gray-400 hover:text-cyan-400 transition-colors"
                whileHover={{ scale: 1.2, rotate: 360 }}
                transition={{ duration: 0.3 }}
@@ -1382,7 +1382,7 @@ export default function Portfolio() {
                <Linkedin className="w-6 h-6" />
              </motion.a>
              <motion.a 
-               href="mailto:fauzanalditester@gmail.com" 
+               href="mailto:fauzanalditester@gmail.com"
                className="text-gray-400 hover:text-cyan-400 transition-colors"
                whileHover={{ scale: 1.2, rotate: 360 }}
                transition={{ duration: 0.3 }}
@@ -1391,13 +1391,45 @@ export default function Portfolio() {
              </motion.a>
            </div>
          </div>
-         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
-           <p className="text-gray-400">
-           © 2024 Fauzan Aldi – Security Researcher. Built with React, TypeScript & Tailwind CSS.
-           </p>
-         </div>
+         
        </div>
      </footer>
+      {/* Bottom Section */}
+      <div className="">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div className="text-center md:text-left">
+          
+              
+              </div>
+              
+              
+
+            </div>
+          </div>
+         <div className="mt-8 pt-8 border-t border-gray-800 text-center">
+  <p className="text-gray-400">
+    © 2024 Fauzan Aldi – Security Researcher. Built with React, TypeScript & Tailwind CSS.
+  </p>
+  <p className="text-gray-500 text-xs mt-1">
+    Built with React, TypeScript & Tailwind CSS
+  </p>
+  <div className="flex justify-center space-x-6 mt-2">
+    <motion.div
+      className="flex items-center space-x-2 text-gray-500 text-xs"
+      whileHover={{ scale: 1.05 }}
+    >
+      <Shield className="w-4 h-4" />
+      <span>Secure by Design</span>
+    </motion.div>
+    <motion.div
+      className="flex items-center space-x-2 text-gray-500 text-xs"
+      whileHover={{ scale: 1.05 }}
+    >
+      <Code className="w-4 h-4" />
+      <span>Open Source</span>
+    </motion.div>
+  </div>
+</div>
       </section>
     </div>
   );
