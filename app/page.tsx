@@ -560,7 +560,7 @@ const certificates: Certificate[] = [
     id: 4,
     title: "Jaringan Komputer",
     description: "Kursus ini mengajarkan dasar-dasar jaringan komputer, termasuk protokol, alamat IP dll.",
-    imageUrl: "/src/img/jaringan.png",
+    imageUrl: "/src/img/Jaringan.png",
     issuer: "Coursera-Net",
     year: "2024"
   },
