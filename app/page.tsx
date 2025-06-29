@@ -42,7 +42,71 @@ import {
 import { useInView } from 'react-intersection-observer';
 import { ReactNode } from 'react';
 import {  Clock, Calendar } from 'lucide-react';
-type AuthState = 'login' | 'dashboard' | 'portfolio';
+
+
+export interface AboutData {
+  id: number;
+  name: string;
+  title: string;
+  description: string;
+  age: number;
+  city: string;
+  phone: string;
+  email: string;
+  degree: string;
+  profileImage: string;
+}
+
+export interface Education {
+  id: number;
+  institution: string;
+  degree: string;
+  field: string;
+  startYear: string;
+  endYear: string;
+  gpa: string;
+  description: string;
+  type: 'university' | 'school' | 'certification';
+}
+
+export interface Experience {
+  id: number;
+  title: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  responsibilities: string[];
+  type: 'work' | 'freelance' | 'volunteer';
+}
+
+export interface Project {
+  id: number;
+  title: string;
+  description: string;
+  technologies: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  imageUrl?: string;
+  category: string;
+}
+
+
+
+export interface ContactInfo {
+  id: number;
+  email: string;
+  phone: string;
+  location: string;
+  github: string;
+  linkedin: string;
+  website?: string;
+}
+
+export type AuthState = 'login' | 'dashboard' | 'portfolio';
+
+export type DashboardSection = 'overview' | 'about' | 'education' | 'experience' | 'projects' | 'skills' | 'certificates' | 'contact';
 
 const articles = [
   {
@@ -570,7 +634,7 @@ const certificates: Certificate[] = [
 function CertificateCard({ cert }: { cert: Certificate }) {
   return (
     <Card className="group bg-gray-900/50 border-gray-800 backdrop-blur-sm hover:border-cyan-500/30 transition-all duration-300 hover:scale-105">
-      <div className="relative overflow-hidden h-40 bg-gradient-to-br from-gray-100 to-gray-200">
+      <div className=" relative overflow-hidden h-40 bg-gradient-to-br from-gray-100 to-gray-200">
         <Image
           src={cert.imageUrl}
           alt={cert.title}
@@ -691,22 +755,19 @@ export default function Portfolio() {
           </button>
         ))}
       </div>
-
-
-
-
-            
                
           </div>
         </div>
       </nav>
+
+      
 
   {/* Hero Section */}
   function Hero() 
   return 
     <section
       id="hero"
-      className="py-20 px-6"
+      className="py-20 px-4 sm:px-6 "
     >
       <div className="container pb-8 sm:pb-0">
         <div className="grid grid-cols-1 sm:grid-cols-2">
@@ -773,7 +834,7 @@ export default function Portfolio() {
          
           <div className="grid md:grid-cols-2 gap-12 items-start">
   {/* Bagian Kiri: Teks */}
-  <div className="space-y-6 text-justify pl-16">
+  <div className=" flex-col space-y-6 text-justify pl-0 sm:pl-8 md:pl-16">
   <h3 className="text-xl font-bold text-white">Security Researcher & CTF Players</h3>
   <div className="space-y-6 text-justify">
     <p className="text-sm text-gray-300 leading-relaxed">
@@ -825,12 +886,12 @@ export default function Portfolio() {
   </div>
 
    <div>    
-            <div className="flex justify-center md:justify-end">
+            <div className="flex justify-center md:justify-end ">
             <div className="relative">
             <img 
              src="/src/img/aldi1.jpeg" 
              alt="My Profile"  
-            className="w-[300px] h-[300px] object-cover rounded-xl shadow-md relative left-[-150px] top-14"
+             className="w-[300px] h-[300px] sm:w-[300px] sm:h-[300px] object-cover rounded-xl shadow-md relative sm:left-[-150px] sm:top-14 mt-6 mx-auto sm:mx-0"
             />
           </div>       
          
@@ -859,14 +920,14 @@ export default function Portfolio() {
                     <GraduationCap className="w-8 h-8 text-cyan-400" />
                   </div>
                   <div className="flex-1">
-                    <div className="flex justify-between items-start mb-4">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2 sm:gap-0">
                       <div>
                         <h3 className="text-xl font-bold text-white mb-2">Universitas Maritim Raja Ali Haji</h3>
                         <p className="text-cyan-400 font-medium">Teknik Informatika</p>
                       </div>
                       <Badge className="bg-cyan-500/20 text-cyan-400 border-cyan-500/30">2023 - 2027</Badge>
                     </div>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-300">
                     Focused on secure web application development,
                     vulnerability assessment, and implementation of security best practices across full-stack environments.
                     </p>
@@ -885,7 +946,7 @@ export default function Portfolio() {
                     <Award className="w-8 h-8 text-purple-400" />
                   </div>
                   <div className="flex-1">
-                    <div className="flex justify-between items-start mb-4">
+                    <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-2 sm:gap-0">
                       <div>
                         <h3 className="text-xl font-bold text-white mb-2">SMKN 4 Tanjung Pinang</h3>
                         <p className="text-purple-400 font-medium">Teknik Komputer Dan Jaringan</p>
@@ -909,6 +970,7 @@ export default function Portfolio() {
           </div>
         </div>
       </section>
+
 
            {/* Experience Section */}
            <section id="experience" className="py-20 px-6 bg-black">
@@ -1130,35 +1192,25 @@ export default function Portfolio() {
     </section>
 
     
-    {/* Interests Section */}
-<SectionWrapper id="interests">
-  <div className="max-w-6xl mx-auto">
+   {/* Interests Section */}
+<section id="interests">
+  <div className="max-w-6xl mx-auto px-6">
     {/* Header */}
     <div className="text-center mb-16">
-      <motion.h2 
-        className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
+      <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
         Hack & Reading Articles
-      </motion.h2>
+      </h2>
       <p className="text-gray-300 font-sans">
-      Sharing articles that fuel my passion for cybersecurity
+        Sharing articles that fuel my passion for cybersecurity
       </p>
     </div>
 
     {/* Articles Grid */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {articles.map((article, index) => (
-        <motion.div
+      {articles.map((article) => (
+        <div
           key={article.id}
-          className="group bg-gray-800/40 rounded-xl p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-          whileHover={{ y: -4 }}
+          className="group bg-gray-800/40 rounded-xl p-6 border border-gray-700/30 hover:border-gray-600/50 transition-all duration-300 hover:-translate-y-1"
         >
           {/* Header */}
           <div className="flex items-start justify-between mb-4">
@@ -1210,20 +1262,16 @@ export default function Portfolio() {
               </span>
             ))}
           </div>
-        </motion.div>
+        </div>
       ))}
     </div>
 
-    {/* Stats */}
-    <motion.div
-      className="mt-16 text-center"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-    >
-    </motion.div>
+    {/* Optional footer/stats */}
+    <div className="mt-16 text-center">
+      {/* Konten statistik atau tambahan di sini jika ada */}
+    </div>
   </div>
-</SectionWrapper>
+</section>
 
      
           
