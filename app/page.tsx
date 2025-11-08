@@ -743,7 +743,7 @@ export default function Portfolio() {
       
       {/* Left: Navigation Menu */}
       <div className="hidden md:flex space-x-8">
-        {['About', 'Education', 'Experience', 'Projects', 'Skills', 'Contact', 'Login'].map((item) => (
+        {['About', 'Education', 'Experience', 'Projects', 'Skills', 'Contact'].map((item) => (
           <button
             key={item}
             onClick={() => scrollToSection(item.toLowerCase())}
