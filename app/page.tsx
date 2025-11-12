@@ -576,7 +576,7 @@ const certificates: Certificate[] = [
     id: 6,
     title: "Sertifikat Apresiasi KKRI",
     description: "Atas peran dan kontribusi menemukan dan melaporkan kerentanan sistem atau aplikasi milik KKRI.",
-    imageUrl: "/src/img/12.JPG",
+    imageUrl: "/src/img/12.jpg",
     issuer: "KKRI",
     year: "2024"
   },
