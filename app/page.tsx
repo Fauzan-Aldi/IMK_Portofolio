@@ -566,34 +566,34 @@ const certificates: Certificate[] = [
   },
   {
     id: 5,
-    title: "Certified AI/ML Pentester (C-AI/MLPEN)",
-    description: "Sertifikasi Dari The Sec Ops Group tentang menguji keamanan sistem AI dan machine learning. ",
-    imageUrl: "/src/img/ai.png",
-    issuer: "The SecOps Group",
+    title: "Sertifikat Apresiasi ITB",
+    description: "Telah bekerja sama dengan ITB dalam hal kordinasi temuan kerentanan dan bertindak etis. ",
+    imageUrl: "/src/img/3.jpg",
+    issuer: "ITB",
     year: "2024"
   },
   {
     id: 6,
-    title: "Certified Red Team Analyst (CRTA)",
-    description: "Sertifikasi Dari CWL untuk menguji kemampuan melakukan serangan simulasi dan eksploitasi.",
-    imageUrl: "/src/img/CRTA.png",
-    issuer: "CWL",
-    year: "2025"
+    title: "Sertifikat Apresiasi KKRI",
+    description: "Atas peran dan kontribusi menemukan dan melaporkan kerentanan sistem atau aplikasi milik KKRI.",
+    imageUrl: "/src/img/12.JPG",
+    issuer: "KKRI",
+    year: "2024"
   },
   {
     id: 7,
-    title: "Certified Multi-Cloud Blue Team Analyst (MCBTA)",
-    description: " Sertifikasi Dari CWL untuk menguasai keamanan, pemantauan, dan investigasi.",
-    imageUrl: "/src/img/MCBTA.jpg",
-    issuer: "CWL",
-    year: "2025"
+    title: "Sertifikat Aperesiasi Diskominfo Riau ",
+    description: "Atas partisipasinya dalam menemukan celah kerentanan pada sistem elektronik Riau.",
+    imageUrl: "/src/img/17.jpg",
+    issuer: "CSIRT",
+    year: "2024"
   },
   {
     id: 8,
-    title: "Certified AppSec Pentester (CAPEN)",
-    description: "Sertifikasi Dari CWL untuk menguji kemampuan praktis dalam pengujian pentes.",
-    imageUrl: "/src/img/AppSec.png",
-    issuer: "CWL",
+    title: "Sertifikat Apresiasi BADAN POM",
+    description: "atas peran dan kontribusi dalam menemukan dan melaporkan kerentanan pada aplikasi Badan POM.",
+    imageUrl: "/src/img/8.jpg",
+    issuer: "CSIRT",
     year: "2024"
   },
   {
